@@ -1,0 +1,27 @@
+{
+  "extends": ["airbnb"],
+  // /*eslint linebreak-style: ["error", "windows"]*/
+  "rules": {
+    "linebreak-style": 0,
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "react/prop-types": "off"
+  },
+  "env": {
+    "browser": true
+  }
+}
