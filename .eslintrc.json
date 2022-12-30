@@ -1,6 +1,5 @@
 {
   "extends": ["airbnb"],
-  // /*eslint linebreak-style: ["error", "windows"]*/
   "rules": {
     "linebreak-style": 0,
     "jsx-a11y/label-has-associated-control": [
@@ -19,7 +18,15 @@
         }
       }
     ],
-    "react/prop-types": "off"
+    "max-len": "off", //["off", { "code": 220 }],
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.config.js", "**/*.config.jsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off"
+    //"no-unused-expressions": ["error", { "allowedTernary": true }]
   },
   "env": {
     "browser": true
