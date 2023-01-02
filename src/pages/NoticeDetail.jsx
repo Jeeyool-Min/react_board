@@ -23,7 +23,7 @@ function NoticeDetail() {
                 <div className="flex-1 md:ml-8 xl:mx-4 2xl:mx-8">
                   <div className="md:py-8">
                     {/* Forum entry */}
-                    <ForumEntry />
+                    <NoticeDetailComponent />
                   </div>
                 </div>
               </div>
