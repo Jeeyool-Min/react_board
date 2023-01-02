@@ -22,10 +22,8 @@ function NoticeDetail() {
                 {/* Middle content */}
                 <div className="flex-1 md:ml-8 xl:mx-4 2xl:mx-8">
                   <div className="md:py-8">
-                    {/* Blocks */}
-                    <div className="space-y-4">
-                      <NoticeDetailComponent />
-                    </div>
+                    {/* Forum entry */}
+                    <ForumEntry />
                   </div>
                 </div>
               </div>
