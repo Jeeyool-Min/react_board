@@ -24,7 +24,7 @@ function NoticeCreate() {
                   <div className="md:py-8">
                     {/* Blocks */}
                     <div className="space-y-4">
-                      <NoticeCreateComponent />
+                      <NoticeCreateComponent candidateSelected="true" />
                     </div>
                   </div>
                 </div>
