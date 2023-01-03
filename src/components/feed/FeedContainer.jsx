@@ -1,8 +1,8 @@
 import React from 'react';
-import FeedPosts from '../components/feed/FeedPosts';
-import Avatar from '../assets/user-40-02.jpg';
+import FeedPosts from './FeedPosts';
+import Avatar from '../../assets/user-40-02.jpg';
 
-function Home() {
+function FeedContainer() {
   return (
     <div className="space-y-4">
       {/* Post Block */}
@@ -83,4 +83,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default FeedContainer;
