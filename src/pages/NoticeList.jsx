@@ -46,7 +46,7 @@ function NoticeDetail() {
               {/* Option 1 */}
               <div>
                 <h2 className="text-2xl text-slate-800 font-bold mb-6">
-                  Option 1
+                  Option1
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
                   Test1
@@ -56,7 +56,7 @@ function NoticeDetail() {
               {/* Option 2 */}
               <div>
                 <h2 className="text-2xl text-slate-800 font-bold mb-6">
-                  Option 2
+                  Option2
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
                   Test2
@@ -66,7 +66,7 @@ function NoticeDetail() {
               {/* Option 3 */}
               <div>
                 <h2 className="text-2xl text-slate-800 font-bold mb-6">
-                  Option 3
+                  Option3
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
                   Test3
