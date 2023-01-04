@@ -49,7 +49,7 @@ function NoticeDetail() {
                   Option 1
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
-                  test1
+                  Test1
                 </div>
               </div>
 
@@ -59,7 +59,7 @@ function NoticeDetail() {
                   Option 2
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
-                  test2
+                  Test2
                 </div>
               </div>
 
@@ -69,7 +69,7 @@ function NoticeDetail() {
                   Option 3
                 </h2>
                 <div className="px-6 py-8 bg-slate-50 border border-slate-200 rounded-sm">
-                  test3
+                  Test3
                 </div>
               </div>
             </div>
