@@ -26,7 +26,7 @@ function InvoicesTableItem({
   };
 
   const statusColor = (status_) => {
-    switch (status) {
+    switch (status_) {
       case 'Paid':
         return 'bg-emerald-100 text-emerald-600';
       case 'Due':
@@ -39,7 +39,7 @@ function InvoicesTableItem({
   };
 
   const typeIcon = (type_) => {
-    switch (type) {
+    switch (type_) {
       case 'Subscription':
         return (
           <svg
