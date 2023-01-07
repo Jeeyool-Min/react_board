@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Tooltip from '../components/Tooltip';
+import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
+import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
+import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeCreate() {
   return (
@@ -161,6 +164,140 @@ function NoticeCreate() {
               </div>
               <div className="text-sm text-slate-400 italic ml-2">On</div>
             </div>
+          </div>
+        </div>
+        <div className="mb-6">
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                className="block text-sm font-medium mb-1"
+                htmlFor="tooltip"
+              >
+                Fixed Top
+              </label>
+              <Tooltip className="ml-2" bg="dark" size="md">
+                <div className="text-sm text-slate-200">test</div>
+              </Tooltip>
+            </div>
+            <div className="flex items-center">
+              <div className="form-switch">
+                <input type="checkbox" id="switch-2" className="sr-only" />
+                <label className="bg-slate-400" htmlFor="switch-2">
+                  <span className="bg-white shadow-sm" aria-hidden="true" />
+                  <span className="sr-only">Switch label</span>
+                </label>
+              </div>
+              <div className="text-sm text-slate-400 italic ml-2">On</div>
+            </div>
+          </div>
+        </div>
+        <hr className="my-6 border-t border-slate-200" />
+        <div className="items-start space-x-3">
+          <div className="w-full">
+            <div className="leading-tight w-full flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-paperclip inline-block mr-1"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
+              </svg>
+              <span>file.txt</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-x inline-block float-right ml-auto"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+            <div className="leading-tight w-full flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-paperclip inline-block mr-1"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
+              </svg>
+              <span>file.txt</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-x inline-block float-right ml-auto"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <hr className="my-6 border-t border-slate-200" />
+        {/* Photos */}
+        <div>
+          <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">
+            Photos (3)
+          </h2>
+          <div className="grid grid-cols-3 gap-4 my-6">
+            <a className="block" href="#0">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto01}
+                width="203"
+                height="152"
+                alt="Meetup 01"
+              />
+            </a>
+            <a className="block" href="#0">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto02}
+                width="203"
+                height="152"
+                alt="Meetup 02"
+              />
+            </a>
+            <a className="block" href="#0">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto03}
+                width="203"
+                height="152"
+                alt="Meetup 03"
+              />
+            </a>
           </div>
         </div>
         {/* Footer */}
