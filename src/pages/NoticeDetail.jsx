@@ -149,6 +149,41 @@ function NoticeDetail() {
           </a>
         </div>
       </div>
+      <hr className="my-6 border-t border-slate-200" />
+
+      {/* Files */}
+      <div>
+        <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">
+          Files (3)
+        </h2>
+        <ul>
+          <li>
+            <Link
+              className="mb-1 font-medium text-slate-500 hover:text-indigo-500"
+              to="#0"
+            >
+              EventBudget.xlsm
+              <span className="text-slate-500 font-normal text-xs">
+                {' '}
+                (243KB)
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="font-medium text-slate-500 hover:text-indigo-500"
+              to="#0"
+            >
+              EventDescription.pdf
+              <span className="text-slate-500 font-normal text-xs">
+                {' '}
+                (243KB)
+              </span>
+            </Link>
+          </li>
+          {' '}
+        </ul>
+      </div>
     </article>
   );
 }
