@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
+import DownloadButton from '../components/HoverDownloadButton';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
@@ -121,31 +122,40 @@ function NoticeDetail() {
         </h2>
         <div className="grid grid-cols-3 gap-4 my-6">
           <a className="block" href="#0">
-            <img
-              className="w-full rounded-sm"
-              src={MeetupPhoto01}
-              width="203"
-              height="152"
-              alt="Meetup 01"
-            />
+            <div className="relative overflow-hidden bg-no-repeat bg-cover max-w-sx group">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto01}
+                width="203"
+                height="152"
+                alt="Meetup 01"
+              />
+              <DownloadButton />
+            </div>
           </a>
           <a className="block" href="#0">
-            <img
-              className="w-full rounded-sm"
-              src={MeetupPhoto02}
-              width="203"
-              height="152"
-              alt="Meetup 02"
-            />
+            <div className="relative overflow-hidden bg-no-repeat bg-cover max-w-sx group">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto02}
+                width="203"
+                height="152"
+                alt="Meetup 02"
+              />
+              <DownloadButton />
+            </div>
           </a>
           <a className="block" href="#0">
-            <img
-              className="w-full rounded-sm"
-              src={MeetupPhoto03}
-              width="203"
-              height="152"
-              alt="Meetup 03"
-            />
+            <div className="relative overflow-hidden bg-no-repeat bg-cover max-w-sx group">
+              <img
+                className="w-full rounded-sm"
+                src={MeetupPhoto03}
+                width="203"
+                height="152"
+                alt="Meetup 03"
+              />
+              <DownloadButton />
+            </div>
           </a>
         </div>
       </div>
