@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
+import { FileIcon } from '../components/common/Icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
@@ -168,6 +169,7 @@ function NoticeDetail() {
         </h2>
         <ul>
           <li>
+            <FileIcon />
             <Link
               className="mb-1 font-medium text-slate-500 hover:text-indigo-500"
               to="#0"
@@ -180,6 +182,7 @@ function NoticeDetail() {
             </Link>
           </li>
           <li>
+            <FileIcon />
             <Link
               className="font-medium text-slate-500 hover:text-indigo-500"
               to="#0"
