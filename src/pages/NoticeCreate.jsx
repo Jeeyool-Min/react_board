@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable no-alert */
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Tooltip from '../components/Tooltip';
 import { FileIcon, CloseIcon } from '../components/common/Icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
@@ -7,6 +8,89 @@ import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeCreate() {
+  const navigate = useNavigate();
+  const creator = ''; // initialize it with session.userID
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [isPublic, setPublic] = useState(false);
+  const [notification, setNotification] = useState(false);
+
+  const onTitleHandler = (event) => {
+    setTitle(event.currentTarget.value);
+  };
+  const onContentHandler = (event) => {
+    setContent(event.currentTarget.value);
+  };
+  const onPublicHandler = () => {
+    setPublic(!isPublic);
+  };
+  const onNotificationHandler = () => {
+    setNotification(!notification);
+  };
+  // It will change as we add other props such as files, photos, status (notification and public/private)
+  const createNotice = () => {
+    fetch('/notice/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        creator,
+        public: isPublic,
+        notification,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.message === 'NOTICE_CREATED') {
+          alert('Notice Created');
+          navigate(`/notice/detail/${result.id}`);
+        } else {
+          alert('Notice Not Created');
+          navigate('/notice/list');
+        }
+      });
+  };
+  /*
+  const [files, setFiles] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const uploadPhoto = (imageList) => {
+    imageist.map((image) => {
+      if (
+        !['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(
+          image.type,
+        )
+      ) {
+        console.log('Only images are allowed.');
+        return;
+      }
+
+      // check file size (< 2MB)
+      if (image.size > 2 * 1024 * 1024) {
+        console.log('File must be less than 2MB.');
+      }
+    });
+
+    const fd = new FormData();
+    fd.append('photos', imageList);
+    // Do not set the Content-Type header for multi-part request with fetch()
+    fetch('/notice/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        title_: title,
+        creator_: creator,
+        files_: files,
+        photos_: photos,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.error(err));
+  };
+
+   */
   return (
     <>
       {/* Post 3 */}
@@ -69,6 +153,7 @@ function NoticeCreate() {
               className="form-input w-full border-rose-300"
               type="text"
               placeholder="mandatory, tooltip message, red border in case of error"
+              onChange={onTitleHandler}
             />
           </div>
           <div className="text-xs mt-1 text-rose-500">
@@ -95,6 +180,7 @@ function NoticeCreate() {
               className="form-textarea w-full px-2 py-1"
               rows="8"
               required=""
+              onChange={onContentHandler}
             />
           </div>
         </div>
@@ -121,7 +207,7 @@ function NoticeCreate() {
                     name="radio-buttons"
                     className="form-radio"
                     checked="true"
-                    onChange={() => {}}
+                    onChange={onPublicHandler}
                   />
                   <span className="text-sm ml-2">Public</span>
                 </label>
@@ -132,7 +218,7 @@ function NoticeCreate() {
                     type="radio"
                     name="radio-buttons"
                     className="form-radio"
-                    onChange={() => {}}
+                    onChange={onNotificationHandler}
                   />
                   <span className="text-sm ml-2">Private</span>
                 </label>
@@ -201,38 +287,9 @@ function NoticeCreate() {
               <CloseIcon />
             </div>
             <div className="leading-tight w-full flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-paperclip inline-block mr-1"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#2c3e50"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
-              </svg>
+              <FileIcon />
               <span>file.txt</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-x inline-block float-right ml-auto"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#2c3e50"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <CloseIcon />
             </div>
           </div>
         </div>
@@ -276,12 +333,13 @@ function NoticeCreate() {
         <footer className="flex items-center space-x-4">
           <div className="text-right w-full">
             <button
-              type="submit"
+              type="button"
               className="btn border-slate-200 hover:border-slate-300 text-slate-600 mr-2"
             >
               Cancel
             </button>
             <button
+              onClick={createNotice}
               type="submit"
               className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
             >
