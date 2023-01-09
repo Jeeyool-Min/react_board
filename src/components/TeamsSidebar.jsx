@@ -48,7 +48,7 @@ function TeamsSidebar() {
             {/* Block 1 */}
             <div className="bg-slate-50 p-4 rounded border border-slate-200">
               <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
-                Top Communities
+                My Communities
               </div>
               <ul className="space-y-3">
                 <li>
@@ -65,7 +65,7 @@ function TeamsSidebar() {
                       </div>
                       <div className="truncate">
                         <span className="text-sm font-medium text-slate-800">
-                          Introductions
+                          LibertyRunners
                         </span>
                       </div>
                     </div>
@@ -73,7 +73,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Join
+                      Go
                     </button>
                   </div>
                 </li>
@@ -99,7 +99,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Join
+                      Go
                     </button>
                   </div>
                 </li>
@@ -156,7 +156,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Join
+                      Go
                     </button>
                   </div>
                 </li>
@@ -166,7 +166,7 @@ function TeamsSidebar() {
                   type="button"
                   className="btn-sm w-full bg-white border-slate-200 hover:border-slate-300 text-indigo-500 shadow-none"
                 >
-                  View All
+                  View All / Search Others
                 </button>
               </div>
             </div>
@@ -174,7 +174,7 @@ function TeamsSidebar() {
             {/* Block 2 */}
             <div className="bg-slate-50 p-4 rounded border border-slate-200">
               <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
-                Who to follow
+                Who is online
               </div>
               <ul className="space-y-3">
                 <li>
@@ -199,7 +199,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Follow
+                      Chat
                     </button>
                   </div>
                 </li>
@@ -225,7 +225,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Follow
+                      Chat
                     </button>
                   </div>
                 </li>
@@ -251,7 +251,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Follow
+                      Chat
                     </button>
                   </div>
                 </li>
@@ -277,7 +277,7 @@ function TeamsSidebar() {
                       type="button"
                       className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
                     >
-                      Follow
+                      Chat
                     </button>
                   </div>
                 </li>
@@ -295,7 +295,7 @@ function TeamsSidebar() {
             {/* Block 3 */}
             <div className="bg-slate-50 p-4 rounded border border-slate-200">
               <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
-                Trends for you
+                Recent posts
               </div>
               <ul className="space-y-3">
                 <li>
