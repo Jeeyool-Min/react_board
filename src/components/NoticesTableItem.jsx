@@ -12,18 +12,18 @@ function InvoicesTableItem({
   paiddate,
   type,
 }) {
-  const totalColor = (status_) => {
-    switch (status_) {
-      case 'Paid':
-        return 'text-emerald-500';
-      case 'Due':
-        return 'text-amber-500';
-      case 'Overdue':
-        return 'text-rose-500';
-      default:
-        return 'text-slate-500';
-    }
-  };
+  // const totalColor = (status_) => {
+  //   switch (status_) {
+  //     case 'Paid':
+  //       return 'text-emerald-500';
+  //     case 'Due':
+  //       return 'text-amber-500';
+  //     case 'Overdue':
+  //       return 'text-rose-500';
+  //     default:
+  //       return 'text-slate-500';
+  //   }
+  // };
 
   const statusColor = (status_) => {
     switch (status_) {
