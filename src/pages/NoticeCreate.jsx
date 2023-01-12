@@ -9,10 +9,10 @@ import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeCreate() {
   const navigate = useNavigate();
-  const creator = ''; // initialize it with session.userID
+  // const creator = ''; // initialize it with session.userID
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [isPublic, setPublic] = useState(false);
+  // const [isPublic, setPublic] = useState(false);
   const [notification, setNotification] = useState(false);
 
   const onTitleHandler = (event) => {
@@ -22,14 +22,14 @@ function NoticeCreate() {
     setContent(event.currentTarget.value);
   };
   const onPublicHandler = () => {
-    setPublic(!isPublic);
+    // setPublic(!isPublic);
   };
   const onNotificationHandler = () => {
     setNotification(!notification);
   };
   // It will change as we add other props such as files, photos, status (notification and public/private)
   const createNotice = () => {
-    fetch('/notice/create', {
+    fetch('/api/notice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,21 +37,19 @@ function NoticeCreate() {
       body: JSON.stringify({
         title,
         content,
-        creator,
-        public: isPublic,
-        notification,
+        // creator,
+        // public: isPublic,
+        notification: notification ? 11 : 10,
       }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.message === 'NOTICE_CREATED') {
-          alert('Notice Created');
-          navigate(`/notice/detail/${result.id}`);
-        } else {
-          alert('Notice Not Created');
-          navigate('/notice/list');
-        }
-      });
+    }).then((response) => {
+      if (response.status === 201) {
+        alert('Notice Created');
+        // navigate(`/notice/detail/${result.id}`);
+      } else {
+        alert('Notice Not Created');
+        navigate('/notice/list');
+      }
+    });
   };
   /*
   const [files, setFiles] = useState([]);
@@ -243,7 +241,12 @@ function NoticeCreate() {
             </div>
             <div className="flex items-center">
               <div className="form-switch">
-                <input type="checkbox" id="switch-1" className="sr-only" />
+                <input
+                  type="checkbox"
+                  id="switch-1"
+                  className="sr-only"
+                  onChange={onNotificationHandler}
+                />
                 <label className="bg-slate-400" htmlFor="switch-1">
                   <span className="bg-white shadow-sm" aria-hidden="true" />
                   <span className="sr-only">Switch label</span>
