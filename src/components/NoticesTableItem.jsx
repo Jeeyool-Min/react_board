@@ -81,7 +81,7 @@ function InvoicesTableItem({
         <div className="font-medium text-sky-500">{invoice}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`font-medium ${totalColor(status)}`}>{total}</div>
+        <div className="font-medium">{total}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div
