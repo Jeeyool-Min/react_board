@@ -12,8 +12,9 @@ function NoticeCreate() {
   // const creator = ''; // initialize it with session.userID
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // const [isPublic, setPublic] = useState(false);
+  const [privacy, setPrivacy] = useState('Public');
   const [notification, setNotification] = useState(false);
+  const [fixedOnTop, setFixedOnTop] = useState(false);
 
   const onTitleHandler = (event) => {
     setTitle(event.currentTarget.value);
@@ -21,15 +22,28 @@ function NoticeCreate() {
   const onContentHandler = (event) => {
     setContent(event.currentTarget.value);
   };
-  const onPublicHandler = () => {
-    // setPublic(!isPublic);
+  const onPrivacyHandler = (event) => {
+    setPrivacy(event.currentTarget.value);
   };
   const onNotificationHandler = () => {
     setNotification(!notification);
   };
-  // It will change as we add other props such as files, photos, status (notification and public/private)
+  const onFixedOnTopHandler = () => {
+    setFixedOnTop(!fixedOnTop);
+  };
+  // It will change we add other props such as files, photos, status (notification and public/private)
   const createNotice = () => {
-    fetch('/api/notice', {
+    let status;
+
+    if (privacy === 'Public') {
+      status = 100; // General
+      if (fixedOnTop) {
+        status = 105; // Fixed On Top
+      }
+    } else {
+      status = 110; // Private
+    }
+    fetch('/api/Notice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,25 +51,33 @@ function NoticeCreate() {
       body: JSON.stringify({
         title,
         content,
-        // creator,
-        // public: isPublic,
+        creator: 'jeeyool',
+        status,
         notification: notification ? 11 : 10,
       }),
-    }).then((response) => {
-      if (response.status === 201) {
+    })
+      .then((response) => {
+        if (!response.ok) {
+          alert('Notice Not Created');
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
+      .then((data) => {
         alert('Notice Created');
-        // navigate(`/notice/detail/${result.id}`);
-      } else {
-        alert('Notice Not Created');
+        console.log(data);
+        navigate(`/notice/detail/${data.id}`);
+      })
+      .catch((response) => {
+        console.log(response.status + response.statusText);
         navigate('/notice/list');
-      }
-    });
+      });
   };
   /*
   const [files, setFiles] = useState([]);
   const [photos, setPhotos] = useState([]);
   const uploadPhoto = (imageList) => {
-    imageist.map((image) => {
+    imageList.map((image) => {
       if (
         !['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(
           image.type,
@@ -204,8 +226,10 @@ function NoticeCreate() {
                     type="radio"
                     name="radio-buttons"
                     className="form-radio"
-                    checked="true"
-                    onChange={onPublicHandler}
+                    checked={privacy === 'Public'}
+                    id="public"
+                    value="Public"
+                    onChange={onPrivacyHandler}
                   />
                   <span className="text-sm ml-2">Public</span>
                 </label>
@@ -216,7 +240,10 @@ function NoticeCreate() {
                     type="radio"
                     name="radio-buttons"
                     className="form-radio"
-                    onChange={onNotificationHandler}
+                    checked={privacy === 'Private'}
+                    id="private"
+                    value="Private"
+                    onChange={onPrivacyHandler}
                   />
                   <span className="text-sm ml-2">Private</span>
                 </label>
@@ -271,7 +298,12 @@ function NoticeCreate() {
             </div>
             <div className="flex items-center">
               <div className="form-switch">
-                <input type="checkbox" id="switch-2" className="sr-only" />
+                <input
+                  type="checkbox"
+                  id="switch-2"
+                  className="sr-only"
+                  onChange={onFixedOnTopHandler}
+                />
                 <label className="bg-slate-400" htmlFor="switch-2">
                   <span className="bg-white shadow-sm" aria-hidden="true" />
                   <span className="sr-only">Switch label</span>
