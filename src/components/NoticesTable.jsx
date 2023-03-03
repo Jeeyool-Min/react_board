@@ -1,45 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Notices from './NoticesTableItem';
+import NoticeItem from './NoticesTableItem';
 
-function NoticesTable({ selectedItems }) {
-  const notices = [
-    {
-      id: '0',
-      title: 'Sunday Running',
-      status: 'Public',
-      creator: 'Min Young Choe',
-      writtendate: '01/01/2023',
-    },
-    {
-      id: '1',
-      title: 'Woman Running',
-      status: 'Private',
-      creator: 'Jeeyul Min',
-      writtendate: '02/01/2023',
-    },
-    {
-      id: '2',
-      title: 'Man Running',
-      status: 'Paid',
-      creator: 'Soo Kim',
-      writtendate: '03/01/2023',
-    },
-    {
-      id: '3',
-      title: 'Saturday Running',
-      status: 'Public',
-      creator: 'Jay Jang',
-      writtendate: '04/01/2023',
-    },
-  ];
-
+function NoticesTable({ notices, selectedItems }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
 
   useEffect(() => {
     setList(notices);
-  }, []);
+  }, [notices]); // notices
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -114,14 +83,13 @@ function NoticesTable({ selectedItems }) {
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-200">
               {list.map((notice) => (
-                <Notices
+                <NoticeItem
                   key={notice.id}
                   id={notice.id}
-                  notice={notice.id}
                   title={notice.title}
                   status={notice.status}
                   creator={notice.creator}
-                  writtendate={notice.writtendate}
+                  writtendate={notice.createdAt}
                   handleClick={handleClick}
                   isChecked={isCheck.includes(notice.id)}
                 />
