@@ -1,22 +1,49 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 // import Header from '../components/Header';
 import SearchForm from '../components/SearchForm';
 import DeleteButton from '../components/DeleteButton';
 import PaginationNumeric from '../components/PaginationNumeric';
 import DateSelect from '../components/DateSelect';
 import FilterButton from '../components/DropdownFilter';
-import InvoicesTable from '../components/NoticesTable';
+import NoticesTable from '../components/NoticesTable';
 
 // import EditMenu from '../components/DropdownEditMenu';
 
 function NoticeList() {
-  // const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchParams] = useSearchParams(); // get Query String
   const [selectedItems, setSelectedItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [notices, setNotices] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const handleSelectedItems = (selectedItems_) => {
     setSelectedItems([...selectedItems]);
-    console.log(selectedItems_);
+    // console.log(selectedItems_);
   };
+  useEffect(() => {
+    let pageParam = searchParams.get('page'); // notice/list?page=10 || //notice/list
+    pageParam = pageParam ? parseInt(pageParam, 10) : 0; // BE communication
+    setPage(pageParam + 1);
+    fetch(`/api/Notice/list?page=${pageParam}`)
+      .then((response) => {
+        if (!response.ok) {
+          alert("Notice doesn't exist");
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setNotices(data.content); // Pageable obejct - content Property -- data list
+        setLoading(false);
+        setPage(data.number + 1);
+        // setNoticeLimit(data.size);
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      })
+      .catch((response) => console.log(response));
+  }, [searchParams]); // if searchParams is missing here, even if url changes, it won't pull up new data
+
   return (
     <article className="bg-white shadow-md rounded border border-slate-200 p-5">
       {/* Breadcrumbs */}
@@ -127,11 +154,16 @@ function NoticeList() {
           </div>
 
           {/* Table */}
-          <InvoicesTable selectedItems={handleSelectedItems} />
+          {loading && <div> loading... </div>}
+          <NoticesTable notices={notices} selectedItems={handleSelectedItems} />
 
           {/* Pagination */}
           <div className="mt-8">
-            <PaginationNumeric />
+            <PaginationNumeric
+              page={page}
+              totalPages={totalPages}
+              setPage={setPage}
+            />
           </div>
         </div>
       </main>
