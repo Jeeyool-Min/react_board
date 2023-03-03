@@ -1,28 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NoticesTableItem({
   id,
   handleClick,
   isChecked,
-  notice,
   status,
   title,
   creator,
   writtendate,
 }) {
-  // const totalColor = (status_) => {
-  //   switch (status_) {
-  //     case 'Paid':
-  //       return 'text-emerald-500';
-  //     case 'Due':
-  //       return 'text-amber-500';
-  //     case 'Overdue':
-  //       return 'text-rose-500';
-  //     default:
-  //       return 'text-slate-500';
-  //   }
-  // };
-
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -40,10 +27,12 @@ function NoticesTableItem({
         </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-sky-500">{notice}</div>
+        <div className="font-medium text-sky-500">{id}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`font-medium ${status}`}>{title}</div>
+        <div className={`font-medium ${status}`}>
+          <Link to={`/notice/detail/${id}`}>{title}</Link>
+        </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div
@@ -57,7 +46,9 @@ function NoticesTableItem({
         <div className="font-medium text-slate-800">{creator}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{writtendate}</div>
+        <div>
+          {writtendate && new Date(writtendate).toLocaleDateString('en-US')}
+        </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
         <div className="space-x-1">
