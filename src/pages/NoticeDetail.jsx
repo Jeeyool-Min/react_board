@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
 import { FileIcon } from '../components/common/Icons';
@@ -112,32 +111,7 @@ function NoticeDetail() {
         </div>
       </header>
       {/* Content */}
-      <div className="space-y-4 mb-6">
-        {notice && notice.content}
-        {/*
-        <p>
-          Looking for new ideas to get users, receive feedback, and increase
-          exposure! Besides PH, where else do you showcase your product?
-        </p>
-        <p className="mb-6">
-          There is so much happening in the AI space. Advances in the economic
-          sectors have seen automated business practices rapidly increasing
-          economic value. While the realm of the human sciences has used the
-          power afforded by computational capabilities to solve many human based
-          dilemmas. Even the art scene has adopted carefully selected ML
-          applications to usher in the technological movement.
-        </p>
-        <p className="mb-6">
-          There is so much happening in the AI space. Advances in the economic
-          sectors have seen automated business practices rapidly increasing
-          economic value. While the realm of the human sciences has used the
-          power afforded by computational capabilities to solve many human based
-          dilemmas. Even the art scene has adopted carefully selected ML
-          applications to usher in the technological movement.
-        </p>
-        <p>Please advise 🙌</p>
-  */}
-      </div>
+      <div className="space-y-4 mb-6">{notice && notice.content}</div>
       <hr className="my-6 border-t border-slate-200" />
 
       {/* Photos */}
