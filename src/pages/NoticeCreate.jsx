@@ -43,6 +43,7 @@ function NoticeCreate() {
     } else {
       status = 110; // Private
     }
+
     fetch('/api/Notice', {
       method: 'POST',
       headers: {
@@ -73,44 +74,7 @@ function NoticeCreate() {
         navigate('/notice/list');
       });
   };
-  /*
-  const [files, setFiles] = useState([]);
-  const [photos, setPhotos] = useState([]);
-  const uploadPhoto = (imageList) => {
-    imageList.map((image) => {
-      if (
-        !['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(
-          image.type,
-        )
-      ) {
-        console.log('Only images are allowed.');
-        return;
-      }
 
-      // check file size (< 2MB)
-      if (image.size > 2 * 1024 * 1024) {
-        console.log('File must be less than 2MB.');
-      }
-    });
-
-    const fd = new FormData();
-    fd.append('photos', imageList);
-    // Do not set the Content-Type header for multi-part request with fetch()
-    fetch('/notice/create', {
-      method: 'POST',
-      body: JSON.stringify({
-        title_: title,
-        creator_: creator,
-        files_: files,
-        photos_: photos,
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.error(err));
-  };
-
-   */
   return (
     <>
       {/* Post 3 */}
