@@ -1,13 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
-import { FileIcon } from '../components/common/Icons';
+import { FileIcon } from '../components/common/icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeDetail() {
+  const [notice, setNotice] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`/api/Notice/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          alert("Notice doesn't exist");
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setNotice(data);
+      })
+      .catch((response) => console.log(response));
+  }, []);
+
   return (
     <article className="bg-white shadow-md rounded border border-slate-200 p-5">
       {/* Breadcrumbs */}
@@ -39,7 +57,7 @@ function NoticeDetail() {
         {/* Title */}
         <div className="flex place-content-between space-x-3 mb-3">
           <h2 className="text-2xl text-slate-800 font-bold">
-            where else should I promote my new project? 🤔
+            {notice && notice.title}
           </h2>
           {/* Menu button for Team Managers */}
           <div className="relative">
@@ -82,38 +100,18 @@ function NoticeDetail() {
               className="font-medium text-indigo-500 hover:text-indigo-600"
               href="#0"
             >
-              katemerlu
+              {notice && notice.creator}
             </a>
           </div>
           <div className="flex items-center after:block last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
-            <span className="text-slate-500">2023-01-01</span>
+            <span className="text-slate-500">
+              {notice && new Date(notice.createdAt).toLocaleDateString('en-US')}
+            </span>
           </div>
         </div>
       </header>
       {/* Content */}
-      <div className="space-y-4 mb-6">
-        <p>
-          Looking for new ideas to get users, receive feedback, and increase
-          exposure! Besides PH, where else do you showcase your product?
-        </p>
-        <p className="mb-6">
-          There is so much happening in the AI space. Advances in the economic
-          sectors have seen automated business practices rapidly increasing
-          economic value. While the realm of the human sciences has used the
-          power afforded by computational capabilities to solve many human based
-          dilemmas. Even the art scene has adopted carefully selected ML
-          applications to usher in the technological movement.
-        </p>
-        <p className="mb-6">
-          There is so much happening in the AI space. Advances in the economic
-          sectors have seen automated business practices rapidly increasing
-          economic value. While the realm of the human sciences has used the
-          power afforded by computational capabilities to solve many human based
-          dilemmas. Even the art scene has adopted carefully selected ML
-          applications to usher in the technological movement.
-        </p>
-        <p>Please advise 🙌</p>
-      </div>
+      <div className="space-y-4 mb-6">{notice && notice.content}</div>
       <hr className="my-6 border-t border-slate-200" />
 
       {/* Photos */}

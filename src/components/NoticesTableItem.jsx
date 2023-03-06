@@ -1,28 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+const deleteNotice = (id) => {
+  const confirmDelete = window.confirm(
+    `Are you sure you want to delete notice ${id}?`,
+  );
+  if (confirmDelete) {
+    fetch(`/api/notice/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      if (response.status === 204) {
+        alert('Notice deleted');
+        window.location.reload(); // Reload the page
+      } else {
+        alert('Notice not deleted');
+      }
+    });
+  }
+};
 
 function NoticesTableItem({
   id,
   handleClick,
   isChecked,
-  notice,
   status,
   title,
   creator,
   writtendate,
 }) {
-  // const totalColor = (status_) => {
-  //   switch (status_) {
-  //     case 'Paid':
-  //       return 'text-emerald-500';
-  //     case 'Due':
-  //       return 'text-amber-500';
-  //     case 'Overdue':
-  //       return 'text-rose-500';
-  //     default:
-  //       return 'text-slate-500';
-  //   }
-  // };
-
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -40,10 +48,12 @@ function NoticesTableItem({
         </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-sky-500">{notice}</div>
+        <div className="font-medium text-sky-500">{id}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`font-medium ${status}`}>{title}</div>
+        <div className={`font-medium ${status}`}>
+          <Link to={`/notice/detail/${id}`}>{title}</Link>
+        </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div
@@ -57,7 +67,9 @@ function NoticesTableItem({
         <div className="font-medium text-slate-800">{creator}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{writtendate}</div>
+        <div>
+          {writtendate && new Date(writtendate).toLocaleDateString('en-US')}
+        </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
         <div className="space-x-1">
@@ -82,6 +94,7 @@ function NoticesTableItem({
           <button
             type="button"
             className="text-rose-500 hover:text-rose-600 rounded-full"
+            onClick={() => deleteNotice(id)}
           >
             <span className="sr-only">Delete</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

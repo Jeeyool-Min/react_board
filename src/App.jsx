@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/notice/detail" element={<NoticeDetail />} />
+          <Route path="/notice/detail/:id" element={<NoticeDetail />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/notice/create" element={<NoticeCreate />} />
           <Route path="/notice/update" element={<NoticeUpdate />} />
