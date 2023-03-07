@@ -36,12 +36,12 @@ function NoticeCreate() {
     let status;
 
     if (privacy === 'Public') {
-      status = 100; // General
+      status = 10; // General
       if (fixedOnTop) {
-        status = 105; // Fixed On Top
+        status = 20; // Fixed On Top
       }
     } else {
-      status = 110; // Private
+      status = 30; // Private
     }
 
     fetch('/api/Notice', {
@@ -54,7 +54,7 @@ function NoticeCreate() {
         content,
         creator: 'jeeyool',
         status,
-        notification: notification ? 11 : 10,
+        notification: notification ? 20 : 10,
       }),
     })
       .then((response) => {

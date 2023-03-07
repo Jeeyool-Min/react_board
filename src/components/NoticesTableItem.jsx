@@ -10,6 +10,28 @@ function NoticesTableItem({
   creator,
   writtendate,
 }) {
+  const deleteNotice = () => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete notice ${id}?`,
+    );
+    if (confirmDelete) {
+      fetch(`/api/notice/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
+        if (response.status === 204) {
+          alert('Notice deleted');
+
+          window.location.reload(); // Reload the page
+        } else {
+          alert('Notice not deleted');
+        }
+      });
+    }
+  };
+
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -55,6 +77,7 @@ function NoticesTableItem({
           <button
             type="button"
             className="text-slate-400 hover:text-slate-500 rounded-full"
+            onClick={() => deleteNotice(id)}
           >
             <span className="sr-only">Edit</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
