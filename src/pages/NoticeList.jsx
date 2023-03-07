@@ -19,7 +19,7 @@ function NoticeList() {
   const [totalPages, setTotalPages] = useState(1);
   const handleSelectedItems = (selectedItems_) => {
     setSelectedItems([...selectedItems]);
-    console.log(selectedItems_);
+    // console.log(selectedItems_);
   };
   useEffect(() => {
     let pageParam = searchParams.get('page'); // notice/list?page=10 || //notice/list
