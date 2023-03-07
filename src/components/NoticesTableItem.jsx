@@ -1,27 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const deleteNotice = (id) => {
-  const confirmDelete = window.confirm(
-    `Are you sure you want to delete notice ${id}?`,
-  );
-  if (confirmDelete) {
-    fetch(`/api/notice/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((response) => {
-      if (response.status === 204) {
-        alert('Notice deleted');
-        window.location.reload(); // Reload the page
-      } else {
-        alert('Notice not deleted');
-      }
-    });
-  }
-};
-
 function NoticesTableItem({
   id,
   handleClick,
@@ -31,6 +10,27 @@ function NoticesTableItem({
   creator,
   writtendate,
 }) {
+  const deleteNotice = () => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete notice ${id}?`,
+    );
+    if (confirmDelete) {
+      fetch(`/api/notice/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
+        if (response.status === 204) {
+          alert('Notice deleted');
+          window.location.reload(); // Reload the page
+        } else {
+          alert('Notice not deleted');
+        }
+      });
+    }
+  };
+
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
