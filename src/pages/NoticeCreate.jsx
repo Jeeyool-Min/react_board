@@ -44,7 +44,7 @@ function NoticeCreate() {
       status = 110; // Private
     }
 
-    fetch('/api/Notice', {
+    fetch('/api/notice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
