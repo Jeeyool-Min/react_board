@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Tooltip from '../components/Tooltip';
-import { FileIcon, CloseIcon } from '../components/common/icons';
+import { FileIcon, CloseIcon } from '../components/common/Icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';

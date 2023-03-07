@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
-import { FileIcon } from '../components/common/icons';
+import { FileIcon } from '../components/common/Icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
