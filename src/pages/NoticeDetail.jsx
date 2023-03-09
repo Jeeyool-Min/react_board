@@ -9,10 +9,11 @@ import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeDetail() {
   const [notice, setNotice] = useState();
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/api/Notice/${id}`)
+    fetch(`/api/notice/${id}`)
       .then((response) => {
         if (!response.ok) {
           alert("Notice doesn't exist");
@@ -21,7 +22,9 @@ function NoticeDetail() {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         setNotice(data);
+        setLoading(true);
       })
       .catch((response) => console.log(response));
   }, []);
@@ -66,12 +69,14 @@ function NoticeDetail() {
               className="absolute top-0 right-0 inline-flex"
             >
               <li>
-                <Link
-                  className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
-                  to="#0"
-                >
-                  Edit
-                </Link>
+                {!loading && (
+                  <Link
+                    className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
+                    to={`/notice/update/${notice.id}`}
+                  >
+                    Edit
+                  </Link>
+                )}
               </li>
               <li>
                 <Link
@@ -100,7 +105,7 @@ function NoticeDetail() {
               className="font-medium text-indigo-500 hover:text-indigo-600"
               href="#0"
             >
-              {notice && notice.creator}
+              {notice && notice.creator.email}
             </a>
           </div>
           <div className="flex items-center after:block last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
