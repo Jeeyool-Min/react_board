@@ -88,7 +88,7 @@ function NoticesTable({ notices, selectedItems }) {
                   id={notice.id}
                   title={notice.title}
                   status={notice.status}
-                  creator={notice.creator}
+                  creator={notice.creator.email}
                   writtendate={notice.createdAt}
                   handleClick={handleClick}
                   isChecked={isCheck.includes(notice.id)}
