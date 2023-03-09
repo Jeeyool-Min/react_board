@@ -44,7 +44,7 @@ function NoticeCreate() {
       status = 30; // Private
     }
 
-    fetch('/api/Notice', {
+    fetch('/api/notice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ function NoticeCreate() {
       body: JSON.stringify({
         title,
         content,
-        creator: 'jeeyool',
+        creator: '57ee0a8d21074f0b867a5b24b9cb643e',
         status,
         notification: notification ? 20 : 10,
       }),
