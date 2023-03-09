@@ -25,7 +25,7 @@ function NoticeList() {
     let pageParam = searchParams.get('page'); // notice/list?page=10 || //notice/list
     pageParam = pageParam ? parseInt(pageParam, 10) : 0; // BE communication
     setPage(pageParam + 1);
-    fetch(`/api/Notice/list?page=${pageParam}`)
+    fetch(`/api/notice/list?page=${pageParam}`)
       .then((response) => {
         if (!response.ok) {
           alert("Notice doesn't exist");
