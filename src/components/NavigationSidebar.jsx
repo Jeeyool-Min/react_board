@@ -171,54 +171,6 @@ function Sidebar() {
                 <li className="mr-0.5 md:mr-0 md:mb-0.5">
                   <a
                     className="flex items-center px-2.5 py-2 rounded whitespace-nowrap"
-                    href="/notice/create"
-                  >
-                    <svg
-                      className="w-4 h-4 shrink-0 fill-current text-slate-400 mr-2"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M7.3 8.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 14.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
-                    </svg>
-                    <span className="text-sm font-medium text-slate-600">
-                      notice create
-                    </span>
-                  </a>
-                </li>
-                <li className="mr-0.5 md:mr-0 md:mb-0.5">
-                  <a
-                    className="flex items-center px-2.5 py-2 rounded whitespace-nowrap"
-                    href="/notice/update"
-                  >
-                    <svg
-                      className="w-4 h-4 shrink-0 fill-current text-slate-400 mr-2"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M7.3 8.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 14.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
-                    </svg>
-                    <span className="text-sm font-medium text-slate-600">
-                      notice update
-                    </span>
-                  </a>
-                </li>
-                <li className="mr-0.5 md:mr-0 md:mb-0.5">
-                  <a
-                    className="flex items-center px-2.5 py-2 rounded whitespace-nowrap"
-                    href="/notice/detail"
-                  >
-                    <svg
-                      className="w-4 h-4 shrink-0 fill-current text-slate-400 mr-2"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M7.3 8.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 14.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
-                    </svg>
-                    <span className="text-sm font-medium text-slate-600">
-                      notice detail
-                    </span>
-                  </a>
-                </li>
-                <li className="mr-0.5 md:mr-0 md:mb-0.5">
-                  <a
-                    className="flex items-center px-2.5 py-2 rounded whitespace-nowrap"
                     href="/notice/list"
                   >
                     <svg
@@ -228,7 +180,7 @@ function Sidebar() {
                       <path d="M7.3 8.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM7.3 14.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0ZM.3 9.7c-.4-.4-.4-1 0-1.4l7-7c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.4.4-1 .4-1.4 0Z" />
                     </svg>
                     <span className="text-sm font-medium text-slate-600">
-                      notice list
+                      Notice
                     </span>
                   </a>
                 </li>
