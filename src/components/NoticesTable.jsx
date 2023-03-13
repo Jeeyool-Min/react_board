@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import NoticeItem from './NoticesTableItem';
 
-function NoticesTable({ notices, selectedItems }) {
+function NoticesTable({
+  notices,
+  page,
+  setNotices,
+  setPage,
+  setTotalPages,
+  selectedItems,
+}) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
@@ -92,6 +99,10 @@ function NoticesTable({ notices, selectedItems }) {
                   writtendate={notice.createdAt}
                   handleClick={handleClick}
                   isChecked={isCheck.includes(notice.id)}
+                  page={page}
+                  setNotices={setNotices}
+                  setTotalPages={setTotalPages}
+                  setPage={setPage}
                 />
               ))}
             </tbody>
