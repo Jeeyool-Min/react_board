@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-// import Header from '../components/Header';
 import SearchForm from '../components/SearchForm';
 import DeleteButton from '../components/DeleteButton';
 import PaginationNumeric from '../components/PaginationNumeric';
@@ -17,13 +16,13 @@ function NoticeList() {
   const [notices, setNotices] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const handleSelectedItems = (selectedItems_) => {
     setSelectedItems([...selectedItems]);
-    // console.log(selectedItems_);
   };
   useEffect(() => {
-    let pageParam = searchParams.get('page'); // notice/list?page=10 || //notice/list
-    pageParam = pageParam ? parseInt(pageParam, 10) : 0; // BE communication
+    let pageParam = searchParams.get('page');
+    pageParam = pageParam ? parseInt(pageParam, 10) : 0;
     setPage(pageParam + 1);
     fetch(`/api/notice/list?page=${pageParam}`)
       .then((response) => {
@@ -35,10 +34,9 @@ function NoticeList() {
         return response.json();
       })
       .then((data) => {
-        setNotices(data.content); // Pageable obejct - content Property -- data list
+        setNotices(data.content);
         setLoading(false);
         setPage(data.number + 1);
-        // setNoticeLimit(data.size);
         setTotalPages(data.totalPages);
         setLoading(false);
       })
@@ -156,7 +154,14 @@ function NoticeList() {
 
           {/* Table */}
           {loading && <div> loading... </div>}
-          <NoticesTable notices={notices} selectedItems={handleSelectedItems} />
+          <NoticesTable
+            notices={notices}
+            page={page}
+            selectedItems={handleSelectedItems}
+            setNotices={setNotices}
+            setTotalPages={setTotalPages}
+            setPage={setPage}
+          />
 
           {/* Pagination */}
           <div className="mt-8">
