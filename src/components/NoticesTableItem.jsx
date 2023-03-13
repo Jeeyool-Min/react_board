@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NoticesTableItem({
   id,
@@ -9,7 +9,12 @@ function NoticesTableItem({
   title,
   creator,
   writtendate,
+  page,
+  setNotices,
+  setPage,
+  setTotalPages,
 }) {
+  const navigate = useNavigate();
   const deleteNotice = () => {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete notice ${id}?`,
@@ -24,12 +29,28 @@ function NoticesTableItem({
         if (response.status === 204) {
           alert('Notice deleted');
 
-          window.location.reload(); // Reload the page
+          fetch(`/api/notice/list?page=${page - 1}`)
+            .then((res) => {
+              if (!res.ok) {
+                alert("Notice doesn't exist");
+                return Promise.reject(res);
+              }
+              return res.json();
+            })
+            .then((data) => {
+              setNotices(data.content);
+              setPage(data.number + 1);
+              setTotalPages(data.totalPages);
+            })
+            .catch((res) => console.log(res));
         } else {
           alert('Notice not deleted');
         }
       });
     }
+  };
+  const updateNotice = () => {
+    navigate(`/notice/update/${id}`);
   };
 
   return (
@@ -77,7 +98,7 @@ function NoticesTableItem({
           <button
             type="button"
             className="text-slate-400 hover:text-slate-500 rounded-full"
-            onClick={() => deleteNotice(id)}
+            onClick={updateNotice}
           >
             <span className="sr-only">Edit</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
@@ -96,6 +117,7 @@ function NoticesTableItem({
           <button
             type="button"
             className="text-rose-500 hover:text-rose-600 rounded-full"
+            onClick={() => deleteNotice(id)}
           >
             <span className="sr-only">Delete</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

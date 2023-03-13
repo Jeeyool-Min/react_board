@@ -28,6 +28,7 @@ function NoticeList() {
     fetch(`/api/notice/list?page=${pageParam}`)
       .then((response) => {
         if (!response.ok) {
+          alert(JSON.stringify(response));
           alert("Notice doesn't exist");
           return Promise.reject(response);
         }
