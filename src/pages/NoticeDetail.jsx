@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
 import { FileIcon } from '../components/common/Icons';
@@ -9,8 +9,8 @@ import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
 
 function NoticeDetail() {
   const [notice, setNotice] = useState();
-  const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`/api/notice/${id}`)
@@ -24,10 +24,73 @@ function NoticeDetail() {
       .then((data) => {
         console.log(data);
         setNotice(data);
-        setLoading(true);
       })
       .catch((response) => console.log(response));
   }, []);
+
+  const changePrivacy = () => {
+    let status;
+    if (window.confirm('Are you sure to change privcay setting?')) {
+      switch (notice.status) {
+        case 10:
+        case 20:
+          status = 30;
+          break;
+        case 30:
+          status = 10;
+          break;
+        default:
+          console.log('Wrong status value');
+      }
+
+      fetch('/api/notice', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: notice.id,
+          status,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            console('Status Not Updated');
+            return Promise.reject(response);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert('Status Updated');
+          navigate(`/notice/detail/${data.id}`);
+        })
+        .catch((response) => {
+          console.log(response.status + response.statusText);
+          navigate('/notice/list');
+        });
+    }
+  };
+
+  const deleteNotice = () => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete notice ${id}?`,
+    );
+    if (confirmDelete) {
+      fetch(`/api/notice/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
+        if (response.status === 204) {
+          alert('Notice deleted');
+          navigate('/notice/list');
+        } else {
+          alert('Notice not deleted');
+        }
+      });
+    }
+  };
 
   return (
     <article className="bg-white shadow-md rounded border border-slate-200 p-5">
@@ -69,31 +132,31 @@ function NoticeDetail() {
               className="absolute top-0 right-0 inline-flex"
             >
               <li>
-                {!loading && (
-                  <Link
-                    className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
-                    to={`/notice/update/${notice.id}`}
-                  >
-                    Edit
-                  </Link>
-                )}
-              </li>
-              <li>
                 <Link
                   className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
-                  to="#0"
+                  to={`/notice/update/${id}`}
                 >
-                  {/* public or private */}
-                  Private
+                  Edit
                 </Link>
               </li>
               <li>
-                <Link
+                <button
+                  type="button"
+                  className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
+                  onClick={changePrivacy}
+                >
+                  {/* public or private */}
+                  {notice && notice.status === 30 ? 'Public' : 'Private'}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
                   className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3"
-                  to="#0"
+                  onClick={deleteNotice}
                 >
                   Remove
-                </Link>
+                </button>
               </li>
             </EditMenu>
           </div>
