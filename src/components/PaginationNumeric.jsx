@@ -14,7 +14,6 @@ function PaginationNumeric({ page, totalPages }) {
   const nonCurPageCSS = 'hover:bg-indigo-500 text-slate-600 hover:text-white';
 
   useEffect(() => {
-    console.log('total page: ', totalPages, 'current page: ', page);
     const maxPageNo = totalPages < page + (5 - (page % 5)) // 11 of 13 --> 5
       ? page
       : page + (PAGES_SEEN - (page % PAGES_SEEN)); // 13

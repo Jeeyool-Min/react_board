@@ -31,7 +31,7 @@ function NoticeCreate() {
   const onFixedOnTopHandler = () => {
     setFixedOnTop(!fixedOnTop);
   };
-  // It will change we add other props such as files, photos, status (notification and public/private)
+
   const createNotice = () => {
     let status;
 
