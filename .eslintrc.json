@@ -1,6 +1,66 @@
 {
-  "extends": ["airbnb"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
   "rules": {
+    // eslint-plugin-react
+    "react/react-in-jsx-scope": "off", // turned off due to Next.js imports `import React from 'react'` automatically
+    "react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
+
+    // eslint-plugin-tailwindcss
+    "tailwindcss/classnames-order": "off", // turned off due to a rule conflict with prettier-plugin-tailwindcss
+
+    // eslint
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "log",
+          "warn",
+          "info",
+          "group",
+          "groupEnd",
+          "error",
+          "groupCollapsed"
+        ]
+      }
+    ],
+
+    // eslint-plugin-import
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ],
+
     "linebreak-style": 0,
     "jsx-a11y/label-has-associated-control": [
       "error",
@@ -21,15 +81,7 @@
     "max-len": "off", //["off", { "code": 220 }],
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["**/*.config.js", "**/*.config.jsx"] }
-    ],
     "react/jsx-props-no-spreading": "off"
     //"no-unused-expressions": ["error", { "allowedTernary": true }]
-    // "react/jsx-one-expression-per-line": "off"
-  },
-  "env": {
-    "browser": true
   }
 }
