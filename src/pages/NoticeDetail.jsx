@@ -6,6 +6,7 @@ import { FileIcon } from '../components/common/Icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
+import Comments from '../components/NoticeComments';
 
 function NoticeDetail() {
   const [notice, setNotice] = useState();
@@ -263,6 +264,10 @@ function NoticeDetail() {
           {' '}
         </ul>
       </div>
+      <hr className="my-6 border-t border-slate-200" />
+
+      {/* Comments */}
+      <Comments />
     </article>
   );
 }
