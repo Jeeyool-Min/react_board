@@ -18,7 +18,7 @@ function NoticeList() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const handleSelectedItems = (selectedItems_) => {
-    setSelectedItems([...selectedItems]);
+    setSelectedItems([...selectedItems_]);
     // console.log(selectedItems_);
   };
   useEffect(() => {
@@ -54,18 +54,12 @@ function NoticeList() {
             <Link className="text-slate-500 hover:text-indigo-500" to="/">
               Home
             </Link>
-            <svg
-              className="h-4 w-4 fill-current text-slate-400 mx-2"
-              viewBox="0 0 16 16"
-            >
+            <svg className="h-4 w-4 fill-current text-slate-400 mx-2" viewBox="0 0 16 16">
               <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
             </svg>
           </li>
           <li className="flex items-center">
-            <Link
-              className="text-slate-500 hover:text-indigo-500"
-              to="/notice/list"
-            >
+            <Link className="text-slate-500 hover:text-indigo-500" to="/notice/list">
               List
             </Link>
           </li>
@@ -116,7 +110,6 @@ function NoticeList() {
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-transparent shadow-sm bg-indigo-500 text-white duration-150 ease-in-out"
                   >
                     All
-                    {' '}
                     <span className="ml-1 text-indigo-200"> </span>
                   </button>
                 </li>
@@ -126,7 +119,6 @@ function NoticeList() {
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
                   >
                     Public
-                    {' '}
                     <span className="ml-1 text-slate-400"> </span>
                   </button>
                 </li>
@@ -136,7 +128,6 @@ function NoticeList() {
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
                   >
                     Private
-                    {' '}
                     <span className="ml-1 text-slate-400" />
                   </button>
                 </li>
@@ -160,11 +151,7 @@ function NoticeList() {
 
           {/* Pagination */}
           <div className="mt-8">
-            <PaginationNumeric
-              page={page}
-              totalPages={totalPages}
-              setPage={setPage}
-            />
+            <PaginationNumeric page={page} totalPages={totalPages} setPage={setPage} />
           </div>
         </div>
       </main>

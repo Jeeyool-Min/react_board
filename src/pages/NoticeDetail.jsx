@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import EditMenu from '../components/DropdownEditMenu';
 import DownloadButton from '../components/HoverDownloadButton';
-import { FileIcon } from '../components/common/Icons';
+import { FileIcon } from '../components/common/icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
@@ -35,18 +35,12 @@ function NoticeDetail() {
             <Link className="text-slate-500 hover:text-indigo-500" to="/">
               Home
             </Link>
-            <svg
-              className="h-4 w-4 fill-current text-slate-400 mx-2"
-              viewBox="0 0 16 16"
-            >
+            <svg className="h-4 w-4 fill-current text-slate-400 mx-2" viewBox="0 0 16 16">
               <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
             </svg>
           </li>
           <li className="flex items-center">
-            <Link
-              className="text-slate-500 hover:text-indigo-500"
-              to="/notice/list"
-            >
+            <Link className="text-slate-500 hover:text-indigo-500" to="/notice/list">
               Notice
             </Link>
           </li>
@@ -56,15 +50,10 @@ function NoticeDetail() {
       <header className="pb-4">
         {/* Title */}
         <div className="flex place-content-between space-x-3 mb-3">
-          <h2 className="text-2xl text-slate-800 font-bold">
-            {notice && notice.title}
-          </h2>
+          <h2 className="text-2xl text-slate-800 font-bold">{notice && notice.title}</h2>
           {/* Menu button for Team Managers */}
           <div className="relative">
-            <EditMenu
-              align="right"
-              className="absolute top-0 right-0 inline-flex"
-            >
+            <EditMenu align="right" className="absolute top-0 right-0 inline-flex">
               <li>
                 <Link
                   className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
@@ -96,10 +85,7 @@ function NoticeDetail() {
         {/* Meta */}
         <div className="flex flex-wrap text-sm">
           <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
-            <a
-              className="font-medium text-indigo-500 hover:text-indigo-600"
-              href="#0"
-            >
+            <a className="font-medium text-indigo-500 hover:text-indigo-600" href="#0">
               {notice && notice.creator}
             </a>
           </div>
@@ -116,9 +102,7 @@ function NoticeDetail() {
 
       {/* Photos */}
       <div>
-        <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">
-          Photos (3)
-        </h2>
+        <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">Photos (3)</h2>
         <div className="grid grid-cols-3 gap-4 my-6">
           <a className="block" href="#0">
             <div className="relative overflow-hidden bg-no-repeat bg-cover max-w-sx group">
@@ -162,9 +146,7 @@ function NoticeDetail() {
 
       {/* Files */}
       <div>
-        <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">
-          Files (3)
-        </h2>
+        <h2 className="text-xl leading-snug text-slate-800 font-bold mb-2">Files (3)</h2>
         <ul>
           <li>
             <FileIcon />
@@ -173,26 +155,16 @@ function NoticeDetail() {
               to="#0"
             >
               EventBudget.xlsm
-              <span className="text-slate-500 font-normal text-xs">
-                {' '}
-                (243KB)
-              </span>
+              <span className="text-slate-500 font-normal text-xs"> (243KB)</span>
             </Link>
           </li>
           <li>
             <FileIcon />
-            <Link
-              className="font-medium text-slate-500 hover:text-indigo-500"
-              to="#0"
-            >
+            <Link className="font-medium text-slate-500 hover:text-indigo-500" to="#0">
               EventDescription.pdf
-              <span className="text-slate-500 font-normal text-xs">
-                {' '}
-                (243KB)
-              </span>
+              <span className="text-slate-500 font-normal text-xs"> (243KB)</span>
             </Link>
           </li>
-          {' '}
         </ul>
       </div>
     </article>

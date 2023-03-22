@@ -27,6 +27,7 @@
     ],
     "react/jsx-props-no-spreading": "off"
     //"no-unused-expressions": ["error", { "allowedTernary": true }]
+    // "react/jsx-one-expression-per-line": "off"
   },
   "env": {
     "browser": true
