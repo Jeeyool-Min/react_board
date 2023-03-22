@@ -61,8 +61,8 @@ function NoticeUpdate() {
       .catch((response) => console.log(response));
   }, []);
 
-  const goToList = () => {
-    navigate('/notice/list');
+  const goToPrevPage = () => {
+    navigate(-1);
   };
   const updateNotice = () => {
     let status;
@@ -368,7 +368,7 @@ function NoticeUpdate() {
         <footer className="flex items-center space-x-4">
           <div className="text-right w-full">
             <button
-              onClick={goToList}
+              onClick={goToPrevPage}
               type="button"
               className="btn border-slate-200 hover:border-slate-300 text-slate-600 mr-2"
             >
