@@ -1,10 +1,44 @@
 /* eslint-disable consistent-return */
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+
+import { Auth } from '../services/auth';
+import { BasicAPI } from '../services/api';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accessToken, setAccessToken] = useState('');
+
+  const getToken = useCallback(async () => {
+    const token = await Auth();
+
+    setAccessToken(token);
+  }, []);
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
+  const notice = () => {
+    BasicAPI({
+      url: '/api/notice',
+      method: 'POST',
+      headers: {},
+      body: JSON.stringify({
+        title: 'test title',
+        content: 'test content',
+        creator: '72988f27a793405d8d80e235b664f164',
+      }),
+      accessToken: 'accessToken',
+      handleSuccess: (response) => {
+        console.info(response);
+      },
+      handleError: (response) => {
+        console.info(response);
+      },
+      count: 0,
+    });
+  };
 
   const handleLogin = () => {
     console.info('handle login');
@@ -67,7 +101,7 @@ function Login() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: accessToken,
+        Authorization: 'accessToken',
       },
       body: JSON.stringify({
         title: 'test title',
@@ -128,7 +162,8 @@ function Login() {
       <button
         type="button"
         className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-700"
-        onClick={handleNoticeInsert}
+        onClick={notice}
+        // onClick={handleNoticeInsert}
       >
         NoticeInsert
       </button>
