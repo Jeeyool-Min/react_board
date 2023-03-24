@@ -31,7 +31,7 @@ function NoticeDetail() {
 
   const changePrivacy = () => {
     let status;
-    if (window.confirm('Are you sure to change privcay setting?')) {
+    if (window.confirm('Are you sure to change privacy setting?')) {
       switch (notice.status) {
         case 10:
         case 20:
@@ -74,7 +74,7 @@ function NoticeDetail() {
 
   const deleteNotice = () => {
     const confirmDelete = window.confirm(
-      `Are you sure you want to delete notice ${id}?`,
+      `Are you sure you want to delete notice ${id}?`
     );
     if (confirmDelete) {
       fetch(`/api/notice/${id}`, {
@@ -260,8 +260,7 @@ function NoticeDetail() {
                 (243KB)
               </span>
             </Link>
-          </li>
-          {' '}
+          </li>{' '}
         </ul>
       </div>
       <hr className="my-6 border-t border-slate-200" />

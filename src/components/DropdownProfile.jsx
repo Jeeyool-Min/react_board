@@ -15,9 +15,9 @@ function DropdownProfile({ align }) {
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
       if (
-        !dropdownOpen
-        || dropdown.current.contains(target)
-        || trigger.current.contains(target)
+        !dropdownOpen ||
+        dropdown.current.contains(target) ||
+        trigger.current.contains(target)
       ) {
         return;
       }

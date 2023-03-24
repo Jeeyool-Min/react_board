@@ -144,15 +144,13 @@ function NoticeComments() {
                     {/* Comment text */}
                     <div className="grow text-sm text-slate-800 space-y-2 mb-2">
                       <p>
-                        That's great advice,
-                        {' '}
+                        That's great advice,{' '}
                         <a
                           className="font-medium text-indigo-500 hover:text-indigo-600"
                           href="#0"
                         >
                           @ekuplu89
-                        </a>
-                        {' '}
+                        </a>{' '}
                         👏
                       </p>
                     </div>

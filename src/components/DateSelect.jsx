@@ -36,10 +36,11 @@ function DateSelect() {
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
       if (
-        !dropdownOpen
-        || dropdown.current.contains(target)
-        || trigger.current.contains(target)
-      ) return;
+        !dropdownOpen ||
+        dropdown.current.contains(target) ||
+        trigger.current.contains(target)
+      )
+        return;
       setDropdownOpen(false);
     };
     document.addEventListener('click', clickHandler);

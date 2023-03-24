@@ -17,7 +17,7 @@ function NoticesTableItem({
   const navigate = useNavigate();
   const deleteNotice = () => {
     const confirmDelete = window.confirm(
-      `Are you sure you want to delete notice ${id}?`,
+      `Are you sure you want to delete notice ${id}?`
     );
     if (confirmDelete) {
       fetch(`/api/notice/${id}`, {

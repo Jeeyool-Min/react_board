@@ -2,9 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../utils/Transition';
 
-function ModalSearch({
-  id, searchId, modalOpen, setModalOpen,
-}) {
+function ModalSearch({ id, searchId, modalOpen, setModalOpen }) {
   const modalContent = useRef(null);
   const searchInput = useRef(null);
 
@@ -214,8 +212,7 @@ function ModalSearch({
                     <span>
                       <span className="font-medium text-slate-800 group-hover:text-white">
                         Messages
-                      </span>
-                      {' '}
+                      </span>{' '}
                       - Conversation / … / Mike Mills
                     </span>
                   </Link>
@@ -235,8 +232,7 @@ function ModalSearch({
                     <span>
                       <span className="font-medium text-slate-800 group-hover:text-white">
                         Messages
-                      </span>
-                      {' '}
+                      </span>{' '}
                       - Conversation / … / Eva Patrick
                     </span>
                   </Link>

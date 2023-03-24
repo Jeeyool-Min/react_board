@@ -113,9 +113,7 @@ function NoticeList() {
                     type="button"
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-transparent shadow-sm bg-indigo-500 text-white duration-150 ease-in-out"
                   >
-                    All
-                    {' '}
-                    <span className="ml-1 text-indigo-200"> </span>
+                    All <span className="ml-1 text-indigo-200"> </span>
                   </button>
                 </li>
                 <li className="m-1">
@@ -123,9 +121,7 @@ function NoticeList() {
                     type="button"
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
                   >
-                    Public
-                    {' '}
-                    <span className="ml-1 text-slate-400"> </span>
+                    Public <span className="ml-1 text-slate-400"> </span>
                   </button>
                 </li>
                 <li className="m-1">
@@ -133,9 +129,7 @@ function NoticeList() {
                     type="button"
                     className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
                   >
-                    Private
-                    {' '}
-                    <span className="ml-1 text-slate-400" />
+                    Private <span className="ml-1 text-slate-400" />
                   </button>
                 </li>
               </ul>

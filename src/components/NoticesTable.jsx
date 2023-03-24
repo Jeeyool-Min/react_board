@@ -42,9 +42,7 @@ function NoticesTable({
     <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800">
-          List
-          {' '}
-          <span className="text-slate-400 font-medium"> </span>
+          List <span className="text-slate-400 font-medium"> </span>
         </h2>
       </header>
       <div>

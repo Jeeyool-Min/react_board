@@ -7,21 +7,24 @@ function PaginationNumeric({ page, totalPages }) {
   const navigate = useNavigate();
   const [minPage, setMinPage] = useState(page - (page % PAGES_SEEN) + 1);
   const [maxPage, setMaxPage] = useState(1);
-  const activatedBtnCSS = 'hover:bg-indigo-500 text-slate-600 hover:text-white shadow-sm';
+  const activatedBtnCSS =
+    'hover:bg-indigo-500 text-slate-600 hover:text-white shadow-sm';
   const nonActivatedBtnCSS = 'text-slate-300';
   const pageNumbers = [...Array(maxPage + 1).keys()].slice(minPage);
   const curPageCSS = 'text-indigo-500';
   const nonCurPageCSS = 'hover:bg-indigo-500 text-slate-600 hover:text-white';
 
   useEffect(() => {
-    const maxPageNo = totalPages < page + (5 - (page % 5)) // 11 of 13 --> 5
-      ? page
-      : page + (PAGES_SEEN - (page % PAGES_SEEN)); // 13
+    const maxPageNo =
+      totalPages < page + (5 - (page % 5)) // 11 of 13 --> 5
+        ? page
+        : page + (PAGES_SEEN - (page % PAGES_SEEN)); // 13
     setMaxPage(maxPageNo);
 
-    const minPageNo = page % PAGES_SEEN
-      ? page - (page % PAGES_SEEN) + 1
-      : page - (PAGES_SEEN - 1);
+    const minPageNo =
+      page % PAGES_SEEN
+        ? page - (page % PAGES_SEEN) + 1
+        : page - (PAGES_SEEN - 1);
     setMinPage(minPageNo);
   }, [page, totalPages]);
 

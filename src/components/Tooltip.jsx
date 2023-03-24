@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Transition from '../utils/Transition';
 
-function Tooltip({
-  children, className, bg, size, position,
-}) {
+function Tooltip({ children, className, bg, size, position }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const positionOuterClasses = (position2) => {
