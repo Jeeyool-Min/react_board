@@ -1,6 +1,10 @@
 /* eslint-disable import/no-cycle */
 import { BasicAPI } from './api';
 
+/**
+ * Basic API Configuration
+ * @param {{url: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', headers: object, body: string, accessToken: string, handleSuccess: () => void, handleError: () => void  }} config
+ */
 export const Auth = (config) => {
   const accessToken = fetch('/api/auth/access-token', {
     method: 'POST',
@@ -9,7 +13,9 @@ export const Auth = (config) => {
     },
   })
     .then((response) => {
-      if (config !== (null || undefined)) {
+      console.info('Success Auth API response', response);
+
+      if (config) {
         const newConfig = { ...config };
 
         newConfig.accessToken = response.headers.get('Authorization');
@@ -27,8 +33,9 @@ export const Auth = (config) => {
     })
     .catch((response) => {
       console.error(
-        `Status: ${response.status} | Message: ${response.statusText}`
+        `Fail Auth API Status: ${response.status} and Message: ${response.statusText}`
       );
+      return '';
     });
 
   return accessToken;

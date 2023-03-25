@@ -3,18 +3,24 @@ import { Auth } from './auth';
 
 /**
  * Basic API Configuration
- * @param {{headers?: string, url: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', body: string, accessToken: string, handleSuccess: () => void, handleError: () => void  }} config
+ * @param {{url: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', headers: object, body: string, accessToken: string, handleSuccess: () => void, handleError: () => void  }} config
  */
 export const BasicAPI = (config) => {
-  Object.assign(config.headers, {
+  const tempConfig = { ...config };
+
+  if (!tempConfig.headers) tempConfig.headers = {};
+  if (typeof tempConfig.count !== 'number') tempConfig.count = 0;
+  if (!tempConfig.accessToken) tempConfig.accessToken = '';
+
+  Object.assign(tempConfig.headers, {
     'Content-Type': 'application/json',
-    Authorization: config.accessToken,
+    Authorization: tempConfig.accessToken,
   });
 
-  fetch(config.url, {
-    method: config.method,
-    headers: config.headers,
-    body: config.body,
+  fetch(tempConfig.url, {
+    method: tempConfig.method,
+    headers: tempConfig.headers,
+    body: tempConfig.body,
   })
     .then((response) => {
       if (!response.ok) {
@@ -24,12 +30,9 @@ export const BasicAPI = (config) => {
       return config.handleSuccess(response);
     })
     .catch((response) => {
-      if (config.count === 0) {
-        const newConfig = { ...config };
-
-        newConfig.count += 1;
-        Auth(newConfig);
-        return;
+      if (tempConfig.count === 0) {
+        tempConfig.count += 1;
+        Auth(tempConfig);
       }
 
       config.handleError(response);

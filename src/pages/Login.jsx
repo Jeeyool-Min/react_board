@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Auth } from '../services/auth';
@@ -8,18 +7,49 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accessToken, setAccessToken] = useState('');
+  const [isLogined, setIsLogined] = useState(false);
 
-  const getToken = useCallback(async () => {
+  /**  Get Access Token Callback Function */
+  const getAccessToken = useCallback(async () => {
     const token = await Auth();
 
     setAccessToken(token);
   }, []);
 
   useEffect(() => {
-    getToken();
-  }, []);
+    if (isLogined) {
+      getAccessToken();
+    }
+  }, [isLogined]);
 
-  const notice = () => {
+  /**  Login User */
+  const handleLogin = () => {
+    BasicAPI({
+      url: '/api/account/login',
+      method: 'POST',
+      headers: {},
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      handleSuccess: (response) => {
+        if (!response.ok || response.status !== 200) {
+          return Promise.reject(response);
+        }
+
+        console.info('Success Login API response', response);
+        return setIsLogined(true);
+      },
+      handleError: (response) => {
+        console.error(
+          `Fail Login API Status: ${response.status} and Message: ${response.statusText}`
+        );
+      },
+    });
+  };
+
+  /**  POST Notice */
+  const handlePostNotice = () => {
     BasicAPI({
       url: '/api/notice',
       method: 'POST',
@@ -29,98 +59,18 @@ function Login() {
         content: 'test content',
         creator: '72988f27a793405d8d80e235b664f164',
       }),
-      accessToken: 'accessToken',
+      accessToken,
       handleSuccess: (response) => {
-        console.info(response);
+        console.info('Success POST Notice API response', response);
       },
       handleError: (response) => {
-        console.info(response);
+        console.error(
+          `Fail POST Notice API Status: ${response.status} and Message: ${response.statusText}`
+        );
       },
-      count: 0,
     });
   };
 
-  const handleLogin = () => {
-    console.info('handle login');
-
-    fetch('/api/account/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((response) => {
-        console.info('response', response);
-
-        if (!response.ok || response.status !== 200) {
-          alert('Notice Not Created');
-          return Promise.reject(response);
-        }
-      })
-      .catch((response) => {
-        console.log(response.status + response.statusText);
-      });
-  };
-
-  const handleAccess = () => {
-    console.info('handle Access');
-
-    fetch('/api/auth/access-token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        console.info('access response', response);
-
-        if (!response.ok || response.status !== 200) {
-          alert('Notice Not Created');
-          return Promise.reject(response);
-        }
-
-        const { headers } = response;
-
-        console.info(headers.get('Authorization'));
-
-        setAccessToken(headers.get('Authorization'));
-      })
-      .catch((response) => {
-        console.log(response.status + response.statusText);
-      });
-  };
-
-  const handleNoticeInsert = () => {
-    console.info('handle Access');
-
-    fetch('/api/notice', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'accessToken',
-      },
-      body: JSON.stringify({
-        title: 'test title',
-        content: 'test content',
-        creator: '72988f27a793405d8d80e235b664f164',
-      }),
-    })
-      .then((response) => {
-        console.info('access response', response);
-
-        if (!response.ok || response.status !== 200) {
-          alert('Notice Not Created');
-          return Promise.reject(response);
-        }
-      })
-      .catch((response) => {
-        console.log(response.status + response.statusText);
-      });
-  };
   return (
     <div>
       <input
@@ -146,26 +96,25 @@ function Login() {
         className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-700"
         onClick={handleLogin}
       >
-        submit
+        Login
       </button>
 
       <br />
       <button
         type="button"
         className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-700"
-        onClick={handleAccess}
+        onClick={getAccessToken}
       >
-        Access token
+        GET Access token
       </button>
 
       <br />
       <button
         type="button"
         className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-700"
-        onClick={notice}
-        // onClick={handleNoticeInsert}
+        onClick={handlePostNotice}
       >
-        NoticeInsert
+        POST Notice
       </button>
     </div>
   );
