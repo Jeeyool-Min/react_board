@@ -25,23 +25,8 @@
     // eslint-plugin-tailwindcss
     "tailwindcss/classnames-order": "off", // turned off due to a rule conflict with prettier-plugin-tailwindcss
 
-    // eslint
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "log",
-          "warn",
-          "info",
-          "group",
-          "groupEnd",
-          "error",
-          "groupCollapsed"
-        ]
-      }
-    ],
-
     // eslint-plugin-import
+    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/order": [
       "error",
@@ -61,6 +46,22 @@
       }
     ],
 
+    // eslint
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "log",
+          "warn",
+          "info",
+          "group",
+          "groupEnd",
+          "error",
+          "groupCollapsed"
+        ]
+      }
+    ],
+    "no-alert": "off",
     "linebreak-style": 0,
     "jsx-a11y/label-has-associated-control": [
       "error",

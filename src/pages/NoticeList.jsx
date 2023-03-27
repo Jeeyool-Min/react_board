@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+
 import SearchForm from '../components/SearchForm';
 import DeleteButton from '../components/DeleteButton';
 import PaginationNumeric from '../components/PaginationNumeric';
@@ -18,7 +19,8 @@ function NoticeList() {
   const [totalPages, setTotalPages] = useState(1);
   // eslint-disable-next-line no-unused-vars
   const handleSelectedItems = (selectedItems_) => {
-    setSelectedItems([...selectedItems]);
+    setSelectedItems([...selectedItems_]);
+    // console.log(selectedItems_);
   };
   useEffect(() => {
     let pageParam = searchParams.get('page');
@@ -44,7 +46,7 @@ function NoticeList() {
   }, [searchParams]); // if searchParams is missing here, even if url changes, it won't pull up new data
 
   return (
-    <article className="bg-white shadow-md rounded border border-slate-200 p-5">
+    <article className="rounded border border-slate-200 bg-white p-5 shadow-md">
       {/* Breadcrumbs */}
       <div className="mb-2">
         <ul className="inline-flex flex-wrap text-sm font-medium">
@@ -53,7 +55,7 @@ function NoticeList() {
               Home
             </Link>
             <svg
-              className="h-4 w-4 fill-current text-slate-400 mx-2"
+              className="mx-2 h-4 w-4 fill-current text-slate-400"
               viewBox="0 0 16 16"
             >
               <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
@@ -71,47 +73,47 @@ function NoticeList() {
       </div>
       {/* Header */}
       <main>
-        <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+        <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 lg:px-8">
           {/* Page header */}
-          <div className="sm:flex sm:justify-between sm:items-center mb-5">
+          <div className="mb-5 sm:flex sm:items-center sm:justify-between">
             {/* Left: Title */}
             <div className="mb-4 sm:mb-0">
-              <h1 className="text-2xl md:text-3xl text-slate-800 font-bold">
+              <h1 className="text-2xl font-bold text-slate-800 md:text-3xl">
                 Notice List ✨
               </h1>
             </div>
 
             {/* Right: Actions */}
-            <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+            <div className="grid grid-flow-col justify-start gap-2 sm:auto-cols-max sm:justify-end">
               {/* Search form */}
               <SearchForm placeholder="Search by notice ID…" />
               {/* Create invoice button */}
               <Link to="/notice/create">
                 <button
                   type="button"
-                  className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
+                  className="btn bg-indigo-500 text-white hover:bg-indigo-600"
                 >
                   <svg
-                    className="w-4 h-4 fill-current opacity-50 shrink-0"
+                    className="h-4 w-4 shrink-0 fill-current opacity-50"
                     viewBox="0 0 16 16"
                   >
                     <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                   </svg>
-                  <span className="hidden xs:block ml-2">Create Notice</span>
+                  <span className="ml-2 hidden xs:block">Create Notice</span>
                 </button>
               </Link>
             </div>
           </div>
 
           {/* More actions */}
-          <div className="sm:flex sm:justify-between sm:items-center mb-5">
+          <div className="mb-5 sm:flex sm:items-center sm:justify-between">
             {/* Left side */}
             <div className="mb-4 sm:mb-0">
-              <ul className="flex flex-wrap -m-1">
+              <ul className="-m-1 flex flex-wrap">
                 <li className="m-1">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-transparent shadow-sm bg-indigo-500 text-white duration-150 ease-in-out"
+                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-indigo-500 px-3 py-1 text-sm font-medium leading-5 text-white shadow-sm duration-150 ease-in-out"
                   >
                     All <span className="ml-1 text-indigo-200"> </span>
                   </button>
@@ -119,7 +121,7 @@ function NoticeList() {
                 <li className="m-1">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium leading-5 text-slate-500 shadow-sm duration-150 ease-in-out hover:border-slate-300"
                   >
                     Public <span className="ml-1 text-slate-400"> </span>
                   </button>
@@ -127,7 +129,7 @@ function NoticeList() {
                 <li className="m-1">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium leading-5 text-slate-500 shadow-sm duration-150 ease-in-out hover:border-slate-300"
                   >
                     Private <span className="ml-1 text-slate-400" />
                   </button>
@@ -136,7 +138,7 @@ function NoticeList() {
             </div>
 
             {/* Right side */}
-            <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+            <div className="grid grid-flow-col justify-start gap-2 sm:auto-cols-max sm:justify-end">
               {/* Delete button */}
               <DeleteButton selectedItems={selectedItems} />
               {/* Dropdown */}

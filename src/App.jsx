@@ -7,6 +7,8 @@ import NoticeCreate from './pages/NoticeCreate';
 import NoticeUpdate from './pages/NoticeUpdate';
 import NoticeDetail from './pages/NoticeDetail';
 import NoticeList from './pages/NoticeList';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import './style/common.css';
 
 function App() {
@@ -20,7 +22,13 @@ function App() {
           <Route path="/notice/create" element={<NoticeCreate />} />
           <Route path="/notice/update/:id" element={<NoticeUpdate />} />
           <Route path="/notice/list" element={<NoticeList />} />
+
+          {/* Login */}
+          <Route path="/login" element={<Login />} />
+          {/* Signup */}
+          
         </Route>
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

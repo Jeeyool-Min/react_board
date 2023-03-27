@@ -1,5 +1,5 @@
 import React from 'react';
-import { DownloadIcon } from './common/Icons';
+import { DownloadIcon } from './common/icons';
 
 function HoverDownloadButton() {
   return (

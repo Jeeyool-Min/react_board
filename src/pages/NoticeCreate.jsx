@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Tooltip from '../components/Tooltip';
-import { FileIcon, CloseIcon } from '../components/common/Icons';
+import { FileIcon, CloseIcon } from '../components/common/icons';
 import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
 import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
 import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
@@ -93,10 +93,7 @@ function NoticeCreate() {
               </svg>
             </li>
             <li className="flex items-center">
-              <Link
-                className="text-slate-500 hover:text-indigo-500"
-                to="/notice/list"
-              >
+              <Link className="text-slate-500 hover:text-indigo-500" to="/notice/list">
                 Notice
               </Link>
             </li>
@@ -119,10 +116,7 @@ function NoticeCreate() {
         <div className="mb-3">
           <div>
             <div className="flex items-center justify-between">
-              <label
-                className="block text-sm font-medium mb-1"
-                htmlFor="tooltip"
-              >
+              <label className="block text-sm font-medium mb-1" htmlFor="tooltip">
                 Title
                 <span className="text-rose-500">*</span>
               </label>
@@ -140,17 +134,12 @@ function NoticeCreate() {
               onChange={onTitleHandler}
             />
           </div>
-          <div className="text-xs mt-1 text-rose-500">
-            This field is required!
-          </div>
+          <div className="text-xs mt-1 text-rose-500">This field is required!</div>
         </div>
         <div className="mb-3">
           <div>
             <div className="flex items-center justify-between">
-              <label
-                className="block text-sm font-medium mb-1"
-                htmlFor="tooltip"
-              >
+              <label className="block text-sm font-medium mb-1" htmlFor="tooltip">
                 Content
               </label>
               <Tooltip className="ml-2" bg="dark" size="md">
@@ -171,10 +160,7 @@ function NoticeCreate() {
         <div className="mb-4">
           <div>
             <div className="flex items-center justify-between">
-              <label
-                className="block text-sm font-medium mb-1"
-                htmlFor="tooltip"
-              >
+              <label className="block text-sm font-medium mb-1" htmlFor="tooltip">
                 Public/Private
               </label>
               <Tooltip className="ml-2" bg="dark" size="md">
@@ -218,10 +204,7 @@ function NoticeCreate() {
         <div className="mb-6">
           <div>
             <div className="flex items-center justify-between">
-              <label
-                className="block text-sm font-medium mb-1"
-                htmlFor="tooltip"
-              >
+              <label className="block text-sm font-medium mb-1" htmlFor="tooltip">
                 Notification
               </label>
               <Tooltip className="ml-2" bg="dark" size="md">
@@ -250,10 +233,7 @@ function NoticeCreate() {
         <div className="mb-6">
           <div>
             <div className="flex items-center justify-between">
-              <label
-                className="block text-sm font-medium mb-1"
-                htmlFor="tooltip"
-              >
+              <label className="block text-sm font-medium mb-1" htmlFor="tooltip">
                 Fixed Top
               </label>
               <Tooltip className="ml-2" bg="dark" size="md">
