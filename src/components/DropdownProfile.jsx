@@ -118,6 +118,15 @@ function DropdownProfile({ align }) {
                 Login
               </Link>
             </li>
+            <li>
+              <Link
+                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
+                to="/signup"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Signup
+              </Link>
+            </li>            
           </ul>
         </div>
       </Transition>

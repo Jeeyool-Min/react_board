@@ -33,10 +33,6 @@ function Login() {
         password,
       }),
       handleSuccess: (response) => {
-        if (!response.ok || response.status !== 200) {
-          return Promise.reject(response);
-        }
-
         console.info('Success Login API response', response);
         return setIsLogined(true);
       },

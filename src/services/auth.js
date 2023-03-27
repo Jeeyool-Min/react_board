@@ -2,8 +2,15 @@
 import { BasicAPI } from './api';
 
 /**
- * Basic API Configuration
- * @param {{url: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', headers: object, body: string, accessToken: string, handleSuccess: () => void, handleError: () => void  }} config
+ * Auth Configuration
+ * @param {Object} config
+ * @param {string} config.url
+ * @param {'GET' | 'POST' | 'PUT' | 'DELETE'} config.method
+ * @param {Object?} config.headers
+ * @param {string?} config.body
+ * @param {string?} config.accessToken
+ * @param {() => void} config.handleSuccess
+ * @param {() => void} config.handleError
  */
 export const Auth = (config) => {
   const accessToken = fetch('/api/auth/access-token', {

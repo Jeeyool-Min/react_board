@@ -8,6 +8,7 @@ import NoticeUpdate from './pages/NoticeUpdate';
 import NoticeDetail from './pages/NoticeDetail';
 import NoticeList from './pages/NoticeList';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import './style/common.css';
 
 function App() {
@@ -24,7 +25,10 @@ function App() {
 
           {/* Login */}
           <Route path="/login" element={<Login />} />
+          {/* Signup */}
+          
         </Route>
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
