@@ -1,1 +1,2 @@
-**/.json
+**/*.json
+./src/z_components_from_templates/

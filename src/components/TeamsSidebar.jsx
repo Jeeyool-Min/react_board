@@ -11,8 +11,8 @@ import UserImage05 from '../assets/user-32-05.jpg';
 
 function TeamsSidebar() {
   return (
-    <div className="w-full hidden xl:block xl:w-72">
-      <div className="lg:sticky lg:top-16 lg:h-[calc(100vh-64px)] lg:overflow-x-hidden lg:overflow-y-auto no-scrollbar">
+    <div className="hidden w-full xl:block xl:w-72">
+      <div className="no-scrollbar lg:sticky lg:top-16 lg:h-[calc(100vh-64px)] lg:overflow-y-auto lg:overflow-x-hidden">
         <div className="md:py-8">
           {/* Search form */}
           <div className="mb-6">
@@ -27,12 +27,12 @@ function TeamsSidebar() {
                 placeholder="Search…"
               />
               <button
-                className="absolute inset-0 right-auto group"
+                className="group absolute inset-0 right-auto"
                 type="submit"
                 aria-label="Search"
               >
                 <svg
-                  className="w-4 h-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500 ml-3 mr-2"
+                  className="ml-3 mr-2 h-4 w-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500"
                   viewBox="0 0 16 16"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -46,17 +46,17 @@ function TeamsSidebar() {
           {/* Blocks */}
           <div className="space-y-4">
             {/* Block 1 */}
-            <div className="bg-slate-50 p-4 rounded border border-slate-200">
-              <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
+            <div className="rounded border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-4 text-xs font-semibold uppercase text-slate-400">
                 My Communities
               </div>
               <ul className="space-y-3">
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={GroupAvatar01}
                           width="32"
                           height="32"
@@ -71,7 +71,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Go
                     </button>
@@ -79,10 +79,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={GroupAvatar02}
                           width="32"
                           height="32"
@@ -97,7 +97,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Go
                     </button>
@@ -105,10 +105,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={GroupAvatar03}
                           width="32"
                           height="32"
@@ -123,10 +123,10 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-emerald-100 text-emerald-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-emerald-100 px-2.5 py-1 text-center text-xs font-medium text-emerald-600"
                     >
                       <svg
-                        className="w-4 h-4 fill-current shrink-0"
+                        className="h-4 w-4 shrink-0 fill-current"
                         viewBox="0 0 16 16"
                       >
                         <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
@@ -136,10 +136,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={GroupAvatar04}
                           width="32"
                           height="32"
@@ -154,7 +154,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Go
                     </button>
@@ -164,7 +164,7 @@ function TeamsSidebar() {
               <div className="mt-4">
                 <button
                   type="button"
-                  className="btn-sm w-full bg-white border-slate-200 hover:border-slate-300 text-indigo-500 shadow-none"
+                  className="btn-sm w-full border-slate-200 bg-white text-indigo-500 shadow-none hover:border-slate-300"
                 >
                   View All / Search Others
                 </button>
@@ -172,17 +172,17 @@ function TeamsSidebar() {
             </div>
 
             {/* Block 2 */}
-            <div className="bg-slate-50 p-4 rounded border border-slate-200">
-              <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
+            <div className="rounded border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-4 text-xs font-semibold uppercase text-slate-400">
                 Who is online
               </div>
               <ul className="space-y-3">
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={UserImage02}
                           width="32"
                           height="32"
@@ -197,7 +197,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Chat
                     </button>
@@ -205,10 +205,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={UserImage04}
                           width="32"
                           height="32"
@@ -223,7 +223,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Chat
                     </button>
@@ -231,10 +231,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={UserImage05}
                           width="32"
                           height="32"
@@ -249,7 +249,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Chat
                     </button>
@@ -257,10 +257,10 @@ function TeamsSidebar() {
                 </li>
                 <li>
                   <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+                    <div className="flex grow items-center">
                       <div className="relative mr-3">
                         <img
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={UserImage01}
                           width="32"
                           height="32"
@@ -275,7 +275,7 @@ function TeamsSidebar() {
                     </div>
                     <button
                       type="button"
-                      className="text-xs inline-flex font-medium bg-indigo-100 text-indigo-600 rounded-full text-center px-2.5 py-1"
+                      className="inline-flex rounded-full bg-indigo-100 px-2.5 py-1 text-center text-xs font-medium text-indigo-600"
                     >
                       Chat
                     </button>
@@ -285,7 +285,7 @@ function TeamsSidebar() {
               <div className="mt-4">
                 <button
                   type="button"
-                  className="btn-sm w-full bg-white border-slate-200 hover:border-slate-300 text-indigo-500 shadow-none"
+                  className="btn-sm w-full border-slate-200 bg-white text-indigo-500 shadow-none hover:border-slate-300"
                 >
                   View All
                 </button>
@@ -293,13 +293,13 @@ function TeamsSidebar() {
             </div>
 
             {/* Block 3 */}
-            <div className="bg-slate-50 p-4 rounded border border-slate-200">
-              <div className="text-xs font-semibold text-slate-400 uppercase mb-4">
+            <div className="rounded border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-4 text-xs font-semibold uppercase text-slate-400">
                 Recent posts
               </div>
               <ul className="space-y-3">
                 <li>
-                  <div className="text-sm mb-1">
+                  <div className="mb-1 text-sm">
                     <a className="font-medium text-slate-800" href="#0">
                       Tracking your website traffic on launch day 📈
                     </a>
@@ -307,7 +307,7 @@ function TeamsSidebar() {
                   <div className="text-xs text-slate-500">248 comments</div>
                 </li>
                 <li>
-                  <div className="text-sm mb-1">
+                  <div className="mb-1 text-sm">
                     <a className="font-medium text-slate-800" href="#0">
                       Freemium model questions
                     </a>
@@ -315,7 +315,7 @@ function TeamsSidebar() {
                   <div className="text-xs text-slate-500">47 comments</div>
                 </li>
                 <li>
-                  <div className="text-sm mb-1">
+                  <div className="mb-1 text-sm">
                     <a className="font-medium text-slate-800" href="#0">
                       Slack and Community
                     </a>
@@ -323,7 +323,7 @@ function TeamsSidebar() {
                   <div className="text-xs text-slate-500">24 comments</div>
                 </li>
                 <li>
-                  <div className="text-sm mb-1">
+                  <div className="mb-1 text-sm">
                     <a className="font-medium text-slate-800" href="#0">
                       Who owns user onboarding in your company?
                     </a>
@@ -331,7 +331,7 @@ function TeamsSidebar() {
                   <div className="text-xs text-slate-500">17 comments</div>
                 </li>
                 <li>
-                  <div className="text-sm mb-1">
+                  <div className="mb-1 text-sm">
                     <a className="font-medium text-slate-800" href="#0">
                       Questions from a very confused Web3 startup founder 🤔
                     </a>
@@ -342,7 +342,7 @@ function TeamsSidebar() {
               <div className="mt-4">
                 <button
                   type="button"
-                  className="btn-sm w-full bg-white border-slate-200 hover:border-slate-300 text-indigo-500 shadow-none"
+                  className="btn-sm w-full border-slate-200 bg-white text-indigo-500 shadow-none hover:border-slate-300"
                 >
                   View All
                 </button>

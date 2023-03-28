@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Transition from '../utils/Transition';
+
+import Transition from '../../utils/Transition';
 
 function DropdownEditMenu({ children, align, ...rest }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -39,7 +40,7 @@ function DropdownEditMenu({ children, align, ...rest }) {
       <button
         type="button"
         ref={trigger}
-        className={`bg-white text-slate-400 hover:text-slate-500 rounded-full ${
+        className={`rounded-full bg-white text-slate-400 hover:text-slate-500 ${
           dropdownOpen && 'bg-slate-100 text-slate-500'
         }`}
         aria-haspopup="true"
@@ -47,7 +48,7 @@ function DropdownEditMenu({ children, align, ...rest }) {
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Menu</span>
-        <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
+        <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
           <circle cx="16" cy="16" r="2" />
           <circle cx="10" cy="16" r="2" />
           <circle cx="22" cy="16" r="2" />
@@ -56,7 +57,7 @@ function DropdownEditMenu({ children, align, ...rest }) {
       <Transition
         show={dropdownOpen}
         tag="div"
-        className={`origin-top-right z-10 absolute top-full min-w-36 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${
+        className={`absolute top-full z-10 mt-1 min-w-36 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg ${
           align === 'right' ? 'right-0' : 'left-0'
         }`}
         enter="transition ease-out duration-200 transform"

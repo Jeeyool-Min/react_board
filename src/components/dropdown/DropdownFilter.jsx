@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Transition from '../utils/Transition';
+
+import Transition from '../../utils/Transition';
 
 function DropdownFilter({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -38,21 +39,21 @@ function DropdownFilter({ align }) {
       <button
         type="button"
         ref={trigger}
-        className="btn bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600"
+        className="btn border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-600"
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Filter</span>
         <wbr />
-        <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
+        <svg className="h-4 w-4 fill-current" viewBox="0 0 16 16">
           <path d="M9 15H7a1 1 0 010-2h2a1 1 0 010 2zM11 11H5a1 1 0 010-2h6a1 1 0 010 2zM13 7H3a1 1 0 010-2h10a1 1 0 010 2zM15 3H1a1 1 0 010-2h14a1 1 0 010 2z" />
         </svg>
       </button>
       <Transition
         show={dropdownOpen}
         tag="div"
-        className={`origin-top-right z-10 absolute top-full min-w-56 bg-white border border-slate-200 pt-1.5 rounded shadow-lg overflow-hidden mt-1 ${
+        className={`absolute top-full z-10 mt-1 min-w-56 origin-top-right overflow-hidden rounded border border-slate-200 bg-white pt-1.5 shadow-lg ${
           align === 'right' ? 'right-0' : 'left-0'
         }`}
         enter="transition ease-out duration-200 transform"
@@ -63,14 +64,14 @@ function DropdownFilter({ align }) {
         leaveEnd="opacity-0"
       >
         <div ref={dropdown}>
-          <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4">
+          <div className="px-4 pt-1.5 pb-2 text-xs font-semibold uppercase text-slate-400">
             Filters
           </div>
           <ul className="mb-4">
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">
+                <span className="ml-2 text-sm font-medium">
                   Direct VS Indirect
                 </span>
               </label>
@@ -78,7 +79,7 @@ function DropdownFilter({ align }) {
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">
+                <span className="ml-2 text-sm font-medium">
                   Real Time Value
                 </span>
               </label>
@@ -86,13 +87,13 @@ function DropdownFilter({ align }) {
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Top Channels</span>
+                <span className="ml-2 text-sm font-medium">Top Channels</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">
+                <span className="ml-2 text-sm font-medium">
                   Sales VS Refunds
                 </span>
               </label>
@@ -100,22 +101,22 @@ function DropdownFilter({ align }) {
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Last Order</span>
+                <span className="ml-2 text-sm font-medium">Last Order</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Total Spent</span>
+                <span className="ml-2 text-sm font-medium">Total Spent</span>
               </label>
             </li>
           </ul>
-          <div className="py-2 px-3 border-t border-slate-200 bg-slate-50">
+          <div className="border-t border-slate-200 bg-slate-50 py-2 px-3">
             <ul className="flex items-center justify-between">
               <li>
                 <button
                   type="button"
-                  className="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600"
+                  className="btn-xs border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-600"
                 >
                   Clear
                 </button>
@@ -123,7 +124,7 @@ function DropdownFilter({ align }) {
               <li>
                 <button
                   type="button"
-                  className="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white"
+                  className="btn-xs bg-indigo-500 text-white hover:bg-indigo-600"
                   onClick={() => setDropdownOpen(false)}
                   onBlur={() => setDropdownOpen(false)}
                 >

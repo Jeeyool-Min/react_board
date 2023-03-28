@@ -1,8 +1,9 @@
+/* eslint-disable operator-linebreak */
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Transition from '../utils/Transition';
 
-import UserAvatar from '../assets/user-avatar-32.png';
+import Transition from '../../utils/Transition';
+import UserAvatar from '../../assets/user-avatar-32.png';
 
 function DropdownProfile({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -42,24 +43,24 @@ function DropdownProfile({ align }) {
       <button
         type="button"
         ref={trigger}
-        className="inline-flex justify-center items-center group"
+        className="group inline-flex items-center justify-center"
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
         <img
-          className="w-8 h-8 rounded-full"
+          className="h-8 w-8 rounded-full"
           src={UserAvatar}
           width="32"
           height="32"
           alt="User"
         />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
+          <span className="ml-2 truncate text-sm font-medium group-hover:text-slate-800">
             Acme Inc.
           </span>
           <svg
-            className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
+            className="ml-1 h-3 w-3 shrink-0 fill-current text-slate-400"
             viewBox="0 0 12 12"
           >
             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
@@ -68,7 +69,7 @@ function DropdownProfile({ align }) {
       </button>
 
       <Transition
-        className={`origin-top-right z-10 absolute top-full min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${
+        className={`absolute top-full z-10 mt-1 min-w-44 origin-top-right overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg ${
           align === 'right' ? 'right-0' : 'left-0'
         }`}
         show={dropdownOpen}
@@ -84,14 +85,14 @@ function DropdownProfile({ align }) {
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
-          <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
+          <div className="mb-1 border-b border-slate-200 px-3 pt-0.5 pb-2">
             <div className="font-medium text-slate-800">Acme Inc.</div>
-            <div className="text-xs text-slate-500 italic">Administrator</div>
+            <div className="text-xs italic text-slate-500">Administrator</div>
           </div>
           <ul>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
                 to="/settings"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
@@ -100,11 +101,30 @@ function DropdownProfile({ align }) {
             </li>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
                 to="/signin"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 Sign Out
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
+                to="/login"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
+                to="/signup"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Signup
               </Link>
             </li>
           </ul>

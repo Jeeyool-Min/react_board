@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import NoticeItem from './NoticesTableItem';
 
 function NoticesTable({
@@ -39,20 +40,20 @@ function NoticesTable({
   }, [isCheck]);
 
   return (
-    <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
+    <div className="relative rounded-sm border border-slate-200 bg-white shadow-lg">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800">
-          List <span className="text-slate-400 font-medium"> </span>
+          List <span className="font-medium text-slate-400"> </span>
         </h2>
       </header>
       <div>
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="table-auto w-full">
+          <table className="w-full table-auto">
             {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
+            <thead className="border-y border-slate-200 bg-slate-50 text-xs font-semibold uppercase text-slate-500">
               <tr>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                <th className="w-px whitespace-nowrap px-2 py-3 first:pl-5 last:pr-5">
                   <div className="flex items-center">
                     <label className="inline-flex">
                       <span className="sr-only">Select all</span>
@@ -65,28 +66,28 @@ function NoticesTable({
                     </label>
                   </div>
                 </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">ID</div>
+                <th className="whitespace-nowrap px-2 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">ID</div>
                 </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Title</div>
+                <th className="whitespace-nowrap px-2 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">Title</div>
                 </th>
-                <th className="px-4 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Status</div>
+                <th className="whitespace-nowrap px-4 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">Status</div>
                 </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Creator </div>
+                <th className="whitespace-nowrap px-2 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">Creator </div>
                 </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Written Date</div>
+                <th className="whitespace-nowrap px-2 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">Written Date</div>
                 </th>
-                <th className="px-4 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Actions</div>
+                <th className="whitespace-nowrap px-4 py-3 first:pl-5 last:pr-5">
+                  <div className="text-left font-semibold">Actions</div>
                 </th>
               </tr>
             </thead>
             {/* Table body */}
-            <tbody className="text-sm divide-y divide-slate-200">
+            <tbody className="divide-y divide-slate-200 text-sm">
               {list.map((notice) => (
                 <NoticeItem
                   key={notice.id}

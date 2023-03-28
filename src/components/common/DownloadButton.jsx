@@ -1,11 +1,12 @@
 import React from 'react';
-import { DownloadIcon } from './Icons';
+
+import { DownloadIcon } from './icons/Icons';
 
 function DownloadButton() {
   return (
     <button
       type="button"
-      className="text-slate-400 hover:text-slate-500 rounded-full"
+      className="rounded-full text-slate-400 hover:text-slate-500"
     >
       <span className="sr-only">Download</span>
       <DownloadIcon />
