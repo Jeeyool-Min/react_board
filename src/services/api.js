@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { Auth } from './auth';
+import Auth from './auth';
 
 /**
  * Basic API Configuration
@@ -12,7 +12,7 @@ import { Auth } from './auth';
  * @param {() => void} config.handleSuccess
  * @param {() => void} config.handleError
  */
-export const BasicAPI = (config) => {
+const BasicAPI = (config) => {
   const tempConfig = { ...config };
 
   if (!tempConfig.headers) tempConfig.headers = {};
@@ -45,3 +45,5 @@ export const BasicAPI = (config) => {
       config.handleError(response);
     });
 };
+
+export default BasicAPI;

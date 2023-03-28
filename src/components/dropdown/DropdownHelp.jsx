@@ -1,11 +1,9 @@
-/* eslint-disable operator-linebreak */
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Transition from '../utils/Transition';
 
-import UserAvatar from '../assets/user-avatar-32.png';
+import Transition from '../../utils/Transition';
 
-function DropdownProfile({ align }) {
+function DropdownHelp({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -19,9 +17,8 @@ function DropdownProfile({ align }) {
         !dropdownOpen ||
         dropdown.current.contains(target) ||
         trigger.current.contains(target)
-      ) {
+      )
         return;
-      }
       setDropdownOpen(false);
     };
     document.addEventListener('click', clickHandler);
@@ -43,29 +40,24 @@ function DropdownProfile({ align }) {
       <button
         type="button"
         ref={trigger}
-        className="group inline-flex items-center justify-center"
+        className={`flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 transition duration-150 hover:bg-slate-200 ${
+          dropdownOpen && 'bg-slate-200'
+        }`}
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        <img
-          className="h-8 w-8 rounded-full"
-          src={UserAvatar}
-          width="32"
-          height="32"
-          alt="User"
-        />
-        <div className="flex items-center truncate">
-          <span className="ml-2 truncate text-sm font-medium group-hover:text-slate-800">
-            Acme Inc.
-          </span>
-          <svg
-            className="ml-1 h-3 w-3 shrink-0 fill-current text-slate-400"
-            viewBox="0 0 12 12"
-          >
-            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-          </svg>
-        </div>
+        <span className="sr-only">Need help?</span>
+        <svg
+          className="h-4 w-4"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            className="fill-current text-slate-500"
+            d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z"
+          />
+        </svg>
       </button>
 
       <Transition
@@ -85,48 +77,56 @@ function DropdownProfile({ align }) {
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
-          <div className="mb-1 border-b border-slate-200 px-3 pt-0.5 pb-2">
-            <div className="font-medium text-slate-800">Acme Inc.</div>
-            <div className="text-xs italic text-slate-500">Administrator</div>
+          <div className="px-4 pt-1.5 pb-2 text-xs font-semibold uppercase text-slate-400">
+            Need help?
           </div>
           <ul>
             <li>
               <Link
                 className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                to="/settings"
+                to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Settings
+                <svg
+                  className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-300"
+                  viewBox="0 0 12 12"
+                >
+                  <rect y="3" width="12" height="9" rx="1" />
+                  <path d="M2 0h8v2H2z" />
+                </svg>
+                <span>Documentation</span>
               </Link>
             </li>
             <li>
               <Link
                 className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                to="/signin"
+                to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Sign Out
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                to="/login"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Login
+                <svg
+                  className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-300"
+                  viewBox="0 0 12 12"
+                >
+                  <path d="M10.5 0h-9A1.5 1.5 0 000 1.5v9A1.5 1.5 0 001.5 12h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 0zM10 7L8.207 5.207l-3 3-1.414-1.414 3-3L5 2h5v5z" />
+                </svg>
+                <span>Support Site</span>
               </Link>
             </li>
             <li>
               <Link
                 className="flex items-center py-1 px-3 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                to="/signup"
+                to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Signup
+                <svg
+                  className="mr-2 h-3 w-3 shrink-0 fill-current text-indigo-300"
+                  viewBox="0 0 12 12"
+                >
+                  <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z" />
+                </svg>
+                <span>Contact us</span>
               </Link>
-            </li>            
+            </li>
           </ul>
         </div>
       </Transition>
@@ -134,4 +134,4 @@ function DropdownProfile({ align }) {
   );
 }
 
-export default DropdownProfile;
+export default DropdownHelp;

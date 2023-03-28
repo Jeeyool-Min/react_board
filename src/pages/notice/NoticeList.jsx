@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import SearchForm from '../components/SearchForm';
-import DeleteButton from '../components/DeleteButton';
-import PaginationNumeric from '../components/PaginationNumeric';
-import DateSelect from '../components/DateSelect';
-import FilterButton from '../components/DropdownFilter';
-import NoticesTable from '../components/NoticesTable';
+import SearchForm from '../../components/SearchForm';
+import DeleteButton from '../../components/common/DeleteButton';
+import PaginationNumeric from '../../components/pagination/PaginationNumeric';
+import DateSelect from '../../components/DateSelect';
+import FilterButton from '../../components/dropdown/DropdownFilter';
+import NoticesTable from '../../components/notice/NoticesTable';
 
 // import EditMenu from '../components/DropdownEditMenu';
 

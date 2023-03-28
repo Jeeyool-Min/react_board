@@ -1,15 +1,16 @@
 import React from 'react';
-import UserAvatar from '../assets/user-40-02.jpg';
-import UserImage02 from '../assets/user-28-02.jpg';
-import UserImage05 from '../assets/user-28-05.jpg';
+
+import UserAvatar from '../../assets/user-40-02.jpg';
+import UserImage02 from '../../assets/user-28-02.jpg';
+import UserImage05 from '../../assets/user-28-05.jpg';
 
 function NoticeComments() {
   return (
     <>
       <div>
-        <div className="flex items-start space-x-3 mb-3">
+        <div className="mb-3 flex items-start space-x-3">
           <img
-            className="rounded-full shrink-0"
+            className="shrink-0 rounded-full"
             src={UserAvatar}
             width="40"
             height="40"
@@ -31,7 +32,7 @@ function NoticeComments() {
         <div className="text-right">
           <button
             type="submit"
-            className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap"
+            className="btn-sm whitespace-nowrap bg-indigo-500 text-white hover:bg-indigo-600"
           >
             Reply -&gt;
           </button>
@@ -39,20 +40,20 @@ function NoticeComments() {
       </div>
       {/* Comments */}
       <div className="mt-4">
-        <h3 className="font-semibold text-slate-800 mb-4">Comments</h3>
+        <h3 className="mb-4 font-semibold text-slate-800">Comments</h3>
         <ul className="space-y-5">
           {/* Comment */}
-          <li className="relative pl-9 space-y-5">
+          <li className="relative space-y-5 pl-9">
             {/* Comment wrapper */}
             <div className="flex items-start">
               {/* Comment upvote */}
               <div className="absolute top-0 left-0">
                 <button
                   type="button"
-                  className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center hover:text-indigo-500"
+                  className="flex w-6 flex-col items-center justify-center rounded-sm text-left text-xs font-semibold hover:text-indigo-500"
                 >
                   <svg
-                    className="inline-flex fill-slate-400 mt-1.5 mb-1.5"
+                    className="my-1.5 inline-flex fill-slate-400"
                     width="12"
                     height="6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +66,7 @@ function NoticeComments() {
               {/* Comment content */}
               <div>
                 {/* Comment text */}
-                <div className="grow text-sm text-slate-800 space-y-2 mb-2">
+                <div className="mb-2 grow space-y-2 text-sm text-slate-800">
                   <p>
                     We've also had the same question to be honest. And for
                     Appy.com launch we decided to go with Twitter as a primary
@@ -80,8 +81,8 @@ function NoticeComments() {
                 </div>
                 {/* Comment footer */}
                 <div className="flex flex-wrap text-xs">
-                  <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
-                    <a className="block mr-2" href="#0">
+                  <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
+                    <a className="mr-2 block" href="#0">
                       <img
                         className="rounded-full"
                         src={UserImage02}
@@ -97,7 +98,7 @@ function NoticeComments() {
                       ekuplu89
                     </a>
                   </div>
-                  <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
+                  <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
                     <a
                       className="font-medium text-slate-500 hover:text-slate-600"
                       href="#0"
@@ -105,7 +106,7 @@ function NoticeComments() {
                       Reply
                     </a>
                   </div>
-                  <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
+                  <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
                     <a
                       className="font-medium text-slate-500 hover:text-slate-600"
                       href="#0"
@@ -119,17 +120,17 @@ function NoticeComments() {
             {/* Nested comments */}
             <ul className="space-y-5">
               {/* Comment */}
-              <li className="relative pl-9 space-y-5">
+              <li className="relative space-y-5 pl-9">
                 {/* Comment wrapper */}
                 <div className="flex items-start">
                   {/* Comment upvote */}
                   <div className="absolute top-0 left-0">
                     <button
                       type="button"
-                      className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center hover:text-indigo-500"
+                      className="flex w-6 flex-col items-center justify-center rounded-sm text-left text-xs font-semibold hover:text-indigo-500"
                     >
                       <svg
-                        className="inline-flex fill-slate-400 mt-1.5 mb-1.5"
+                        className="my-1.5 inline-flex fill-slate-400"
                         width="12"
                         height="6"
                         xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +143,7 @@ function NoticeComments() {
                   {/* Comment content */}
                   <div>
                     {/* Comment text */}
-                    <div className="grow text-sm text-slate-800 space-y-2 mb-2">
+                    <div className="mb-2 grow space-y-2 text-sm text-slate-800">
                       <p>
                         That's great advice,{' '}
                         <a
@@ -156,8 +157,8 @@ function NoticeComments() {
                     </div>
                     {/* Comment footer */}
                     <div className="flex flex-wrap text-xs">
-                      <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
-                        <a className="block mr-2" href="#0">
+                      <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
+                        <a className="mr-2 block" href="#0">
                           <img
                             className="rounded-full"
                             src={UserImage05}
@@ -173,7 +174,7 @@ function NoticeComments() {
                           ellielong
                         </a>
                       </div>
-                      <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
+                      <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
                         <a
                           className="font-medium text-slate-500 hover:text-slate-600"
                           href="#0"
@@ -181,7 +182,7 @@ function NoticeComments() {
                           Reply
                         </a>
                       </div>
-                      <div className="flex items-center after:block after:content-['·'] last:after:content-[''] after:text-sm after:text-slate-400 after:px-2">
+                      <div className="flex items-center after:block after:px-2 after:text-sm after:text-slate-400 after:content-['·'] last:after:content-['']">
                         <a
                           className="font-medium text-slate-500 hover:text-slate-600"
                           href="#0"

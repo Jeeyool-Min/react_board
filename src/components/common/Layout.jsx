@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+
 import Header from '../Header';
 import Navbar from '../NavigationSidebar';
 import Teamsbar from '../TeamsSidebar';
@@ -8,14 +9,14 @@ function Layout() {
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         {/*  Site header */}
         <Header />
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 md:py-0 w-full max-w-9xl mx-auto">
+          <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 md:py-0 lg:px-8">
             <div className="xl:flex">
               {/* Left side bar + Content */}
-              <div className="md:flex flex-1">
+              <div className="flex-1 md:flex">
                 {/* Navigation bar */}
                 <Navbar />
                 {/* Middle content */}

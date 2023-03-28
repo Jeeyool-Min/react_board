@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
-import EditMenu from '../components/DropdownEditMenu';
-import DownloadButton from '../components/HoverDownloadButton';
-import { FileIcon } from '../components/common/icons';
-import MeetupPhoto01 from '../assets/meetup-photo-01.jpg';
-import MeetupPhoto02 from '../assets/meetup-photo-02.jpg';
-import MeetupPhoto03 from '../assets/meetup-photo-03.jpg';
-import Comments from '../components/NoticeComments';
+import EditMenu from '../../components/dropdown/DropdownEditMenu';
+import DownloadButton from '../../components/common/HoverDownloadButton';
+import FileIcon from '../../components/common/icons/FileIcon';
+import MeetupPhoto01 from '../../assets/meetup-photo-01.jpg';
+import MeetupPhoto02 from '../../assets/meetup-photo-02.jpg';
+import MeetupPhoto03 from '../../assets/meetup-photo-03.jpg';
+import Comments from '../../components/notice/NoticeComments';
 
 function NoticeDetail() {
   const [notice, setNotice] = useState();

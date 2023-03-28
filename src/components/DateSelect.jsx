@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+
 import Transition from '../utils/Transition';
 
 function DateSelect() {
@@ -62,7 +63,7 @@ function DateSelect() {
       <button
         ref={trigger}
         type="button"
-        className="btn justify-between min-w-44 bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600"
+        className="btn min-w-44 justify-between border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-600"
         aria-label="Select date range"
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -70,7 +71,7 @@ function DateSelect() {
       >
         <span className="flex items-center">
           <svg
-            className="w-4 h-4 fill-current text-slate-500 shrink-0 mr-2"
+            className="mr-2 h-4 w-4 shrink-0 fill-current text-slate-500"
             viewBox="0 0 16 16"
           >
             <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
@@ -78,7 +79,7 @@ function DateSelect() {
           <span>{options[selected].period}</span>
         </span>
         <svg
-          className="shrink-0 ml-1 fill-current text-slate-400"
+          className="ml-1 shrink-0 fill-current text-slate-400"
           width="11"
           height="7"
           viewBox="0 0 11 7"
@@ -89,7 +90,7 @@ function DateSelect() {
       <Transition
         show={dropdownOpen}
         tag="div"
-        className="z-10 absolute top-full right-0 w-full bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+        className="absolute top-full right-0 z-10 mt-1 w-full overflow-hidden rounded border border-slate-200 bg-white py-1.5 shadow-lg"
         enter="transition ease-out duration-100 transform"
         enterStart="opacity-0 -translate-y-2"
         enterEnd="opacity-100 translate-y-0"
@@ -99,7 +100,7 @@ function DateSelect() {
       >
         <div
           ref={dropdown}
-          className="font-medium text-sm text-slate-600"
+          className="text-sm font-medium text-slate-600"
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
@@ -108,7 +109,7 @@ function DateSelect() {
               type="button"
               key={option.id}
               tabIndex="0"
-              className={`flex items-center w-full hover:bg-slate-50 py-1 px-3 cursor-pointer ${
+              className={`flex w-full cursor-pointer items-center py-1 px-3 hover:bg-slate-50 ${
                 option.id === selected && 'text-indigo-500'
               }`}
               onClick={() => {
@@ -117,7 +118,7 @@ function DateSelect() {
               }}
             >
               <svg
-                className={`shrink-0 mr-2 fill-current text-indigo-500 ${
+                className={`mr-2 shrink-0 fill-current text-indigo-500 ${
                   option.id !== selected && 'invisible'
                 }`}
                 width="12"

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { BasicAPI } from './api';
+import BasicAPI from './api';
 
 /**
  * Auth Configuration
@@ -12,7 +12,7 @@ import { BasicAPI } from './api';
  * @param {() => void} config.handleSuccess
  * @param {() => void} config.handleError
  */
-export const Auth = (config) => {
+const Auth = (config) => {
   const accessToken = fetch('/api/auth/access-token', {
     method: 'POST',
     headers: {
@@ -47,3 +47,5 @@ export const Auth = (config) => {
 
   return accessToken;
 };
+
+export default Auth;

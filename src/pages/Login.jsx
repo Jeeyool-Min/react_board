@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Auth } from '../services/auth';
-import { BasicAPI } from '../services/api';
+import Auth from '../services/auth';
+import BasicAPI from '../services/api';
 
 function Login() {
   const [email, setEmail] = useState('');

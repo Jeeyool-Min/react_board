@@ -13,12 +13,12 @@ function SearchForm({ placeholder }) {
         placeholder={placeholder}
       />
       <button
-        className="absolute inset-0 right-auto group"
+        className="group absolute inset-0 right-auto"
         type="submit"
         aria-label="Search"
       >
         <svg
-          className="w-4 h-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500 ml-3 mr-2"
+          className="ml-3 mr-2 h-4 w-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >

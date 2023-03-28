@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { PAGES_SEEN } from '../utils/constants';
+
+import { PAGES_SEEN } from '../../utils/constants';
 
 /* first, last, page, numOfNotices, totalPages, totalNotices */
 function PaginationNumeric({ page, totalPages }) {
@@ -48,7 +49,7 @@ function PaginationNumeric({ page, totalPages }) {
       <nav className="flex" role="navigation" aria-label="Navigation">
         <div className="mr-2">
           <span
-            className={`inline-flex items-center justify-center rounded leading-5 px-2.5 py-2 bg-white border border-slate-200 ${
+            className={`inline-flex items-center justify-center rounded border border-slate-200 bg-white px-2.5 py-2 leading-5 ${
               minPage === 1 ? nonActivatedBtnCSS : activatedBtnCSS
             }`}
           >
@@ -61,11 +62,11 @@ function PaginationNumeric({ page, totalPages }) {
             </button>
           </span>
         </div>
-        <ul className="inline-flex text-sm font-medium -space-x-px shadow-sm">
+        <ul className="inline-flex -space-x-px text-sm font-medium shadow-sm">
           {pageNumbers.map((pgNo) => (
             <li key={pgNo}>
               <Link
-                className={`inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white border border-slate-200 ${
+                className={`inline-flex items-center justify-center border border-slate-200 bg-white px-3.5 py-2 leading-5 ${
                   pgNo === page ? curPageCSS : nonCurPageCSS
                 }`}
                 to={`?page=${pgNo - 1}`}
@@ -77,7 +78,7 @@ function PaginationNumeric({ page, totalPages }) {
         </ul>
         <div className="ml-2">
           <span
-            className={`inline-flex items-center justify-center rounded leading-5 px-2.5 py-2 bg-white border border-slate-200 ${
+            className={`inline-flex items-center justify-center rounded border border-slate-200 bg-white px-2.5 py-2 leading-5 ${
               totalPages === maxPage ? nonActivatedBtnCSS : activatedBtnCSS
             }`}
           >

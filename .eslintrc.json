@@ -26,7 +26,6 @@
     "tailwindcss/classnames-order": "off", // turned off due to a rule conflict with prettier-plugin-tailwindcss
 
     // eslint-plugin-import
-    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/order": [
       "error",
@@ -79,10 +78,10 @@
         }
       }
     ],
-    "max-len": "off", //["off", { "code": 220 }],
+    "max-len": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",
-    "react/jsx-props-no-spreading": "off"
-    //"no-unused-expressions": ["error", { "allowedTernary": true }]
+    "react/jsx-props-no-spreading": "off",
+    "tailwindcss/no-custom-classname": "off"
   }
 }
