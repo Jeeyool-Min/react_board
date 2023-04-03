@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import SearchForm from '../components/SearchForm';
 import DeleteButton from '../components/DeleteButton';
 import PaginationNumeric from '../components/PaginationNumeric';
@@ -14,8 +15,13 @@ function NoticeList() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [notices, setNotices] = useState([]);
-  const [page, setPage] = useState(0);
+  //const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+
+  //destructure from useSelector
+  const page = useSelector((state) => state.pager.page);
+  const dispatch = useDispatch();
+
   // eslint-disable-next-line no-unused-vars
   const handleSelectedItems = (selectedItems_) => {
     setSelectedItems([...selectedItems]);
@@ -36,7 +42,8 @@ function NoticeList() {
       .then((data) => {
         setNotices(data.content);
         setLoading(false);
-        setPage(data.number + 1);
+        dispatch(increment());
+        //setPage(data.number + 1);
         setTotalPages(data.totalPages);
         setLoading(false);
       })
