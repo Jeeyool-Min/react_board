@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
+import Auth from '../../services/auth';
+import BasicAPI from '../../services/api';
 import SearchForm from '../../components/SearchForm';
 import DeleteButton from '../../components/common/DeleteButton';
 import PaginationNumeric from '../../components/pagination/PaginationNumeric';
@@ -17,33 +19,40 @@ function NoticeList() {
   const [notices, setNotices] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+
   // eslint-disable-next-line no-unused-vars
   const handleSelectedItems = (selectedItems_) => {
     setSelectedItems([...selectedItems_]);
     // console.log(selectedItems_);
   };
+
   useEffect(() => {
+    const accessToken = Auth();
     let pageParam = searchParams.get('page');
     pageParam = pageParam ? parseInt(pageParam, 10) : 0;
     setPage(pageParam + 1);
-    fetch(`/api/notice/list?page=${pageParam}`)
-      .then((response) => {
-        if (!response.ok) {
-          alert(JSON.stringify(response));
-          alert("Notice doesn't exist");
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setNotices(data.content);
-        setLoading(false);
-        setPage(data.number + 1);
-        setTotalPages(data.totalPages);
-        setLoading(false);
-      })
-      .catch((response) => console.log(response));
-  }, [searchParams]); // if searchParams is missing here, even if url changes, it won't pull up new data
+
+    BasicAPI({
+      url: `/api/notice/list?page=${pageParam}`,
+      method: 'GET',
+      accessToken,
+      handleSuccess: (response) => {
+        response
+          .json()
+          .then((data) => {
+            console.log(data);
+            setNotices(data.content);
+            setLoading(false);
+            setPage(data.number + 1);
+            setTotalPages(data.totalPages);
+          })
+          .catch((error) => console.info(error));
+      },
+      handleError: (response) => {
+        console.error(response);
+      },
+    });
+  }, [searchParams]);
 
   return (
     <article className="rounded border border-slate-200 bg-white p-5 shadow-md">

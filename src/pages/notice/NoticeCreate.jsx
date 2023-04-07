@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import Auth from '../../services/auth';
+import BasicAPI from '../../services/api';
 import Tooltip from '../../components/Tooltip';
 import FileIcon from '../../components/common/icons/FileIcon';
 import CloseIcon from '../../components/common/icons/CloseIcon';
@@ -35,6 +37,7 @@ function NoticeCreate() {
   };
 
   const createNotice = () => {
+    const accessToken = Auth();
     let status;
 
     if (privacy === 'Public') {
@@ -46,11 +49,9 @@ function NoticeCreate() {
       status = 30; // Private
     }
 
-    fetch('/api/notice', {
+    BasicAPI({
+      url: '/api/notice',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         title,
         content,
@@ -58,23 +59,19 @@ function NoticeCreate() {
         status,
         notification: notification ? 20 : 10,
       }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          alert('Notice Not Created');
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        alert('Notice Created');
-        console.log(data);
-        navigate(`/notice/detail/${data.id}`);
-      })
-      .catch((response) => {
-        console.log(response.status + response.statusText);
+      accessToken,
+      handleSuccess: (response) => {
+        response.json().then((data) => {
+          alert('Notice Created');
+          console.log(data);
+          navigate(`/notice/detail/${data.id}`);
+        });
+      },
+      handleError: (response) => {
+        console.error(response.status + response.statusText);
         navigate('/notice/list');
-      });
+      },
+    });
   };
 
   return (

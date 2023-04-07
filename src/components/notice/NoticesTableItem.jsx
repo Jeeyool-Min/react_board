@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import Auth from '../../services/auth';
+import BasicAPI from '../../services/api';
+
 function NoticesTableItem({
   id,
   handleClick,
@@ -21,32 +24,39 @@ function NoticesTableItem({
       `Are you sure you want to delete notice ${id}?`
     );
     if (confirmDelete) {
-      fetch(`/api/notice/${id}`, {
+      const accessToken = Auth();
+      BasicAPI({
+        url: `/api/notice/${id}`,
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((response) => {
-        if (response.status === 204) {
-          alert('Notice deleted');
+        headers: {},
+        accessToken,
+        handleSuccess: (response) => {
+          if (response.status === 204) {
+            alert('Notice deleted');
 
-          fetch(`/api/notice/list?page=${page - 1}`)
-            .then((res) => {
-              if (!res.ok) {
-                alert("Notice doesn't exist");
-                return Promise.reject(res);
-              }
-              return res.json();
-            })
-            .then((data) => {
-              setNotices(data.content);
-              setPage(data.number + 1);
-              setTotalPages(data.totalPages);
-            })
-            .catch((res) => console.log(res));
-        } else {
-          alert('Notice not deleted');
-        }
+            fetch(`/api/notice/list?page=${page - 1}`)
+              .then((res) => {
+                if (!res.ok) {
+                  alert("Notice doesn't exist");
+                  return Promise.reject(res);
+                }
+                return res.json();
+              })
+              .then((data) => {
+                setNotices(data.content);
+                setPage(data.number + 1);
+                setTotalPages(data.totalPages);
+              })
+              .catch((res) => console.log(res));
+          } else {
+            alert('Notice not deleted');
+          }
+        },
+        handleError: (response) => {
+          console.error(
+            `Fail Login API Status: ${response.status} and Message: ${response.statusText}`
+          );
+        },
       });
     }
   };

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
+import Auth from '../../services/auth';
+import BasicAPI from '../../services/api';
 import Tooltip from '../../components/Tooltip';
 import FileIcon from '../../components/common/icons/FileIcon';
 import CloseIcon from '../../components/common/icons/CloseIcon';
@@ -34,39 +36,45 @@ function NoticeUpdate() {
   };
 
   useEffect(() => {
-    fetch(`/api/notice/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          alert("Notice doesn't exist");
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTitle(data.title);
-        setContent(data.content);
-        // eslint-disable-next-line no-unused-expressions
-        switch (data.status) {
-          case 20:
-            setFixedOnTop(true);
-            break;
-          case 30:
-            setPrivacy('Private');
-            break;
-          default:
-            console.log('Wrong status value');
-        }
-        if (data.notification === 20) {
-          setNotification(true);
-        }
-      })
-      .catch((response) => console.log(response));
+    const accessToken = Auth();
+    BasicAPI({
+      url: `/api/notice/${id}`,
+      method: 'GET',
+      accessToken,
+      handleSuccess: (response) => {
+        response
+          .json()
+          .then((data) => {
+            setTitle(data.title);
+            setContent(data.content);
+            // eslint-disable-next-line no-unused-expressions
+            switch (data.status) {
+              case 20:
+                setFixedOnTop(true);
+                break;
+              case 30:
+                setPrivacy('Private');
+                break;
+              default:
+                console.log('Wrong status value');
+            }
+            if (data.notification === 20) {
+              setNotification(true);
+            }
+          })
+          .catch((error) => console.log(error));
+      },
+      handleError: (response) => {
+        console.error(response);
+      },
+    });
   }, []);
 
   const goToPrevPage = () => {
     navigate(-1);
   };
   const updateNotice = () => {
+    const accessToken = Auth();
     let status;
 
     if (privacy === 'Public') {
@@ -78,11 +86,9 @@ function NoticeUpdate() {
       status = 30;
     }
 
-    fetch('/api/notice', {
+    BasicAPI({
+      url: `/api/notice`,
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         id,
         title,
@@ -90,23 +96,16 @@ function NoticeUpdate() {
         status,
         notification: notification ? 20 : 10,
       }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          alert('Notice Not Updated');
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
-      .then((data) => {
+      accessToken,
+      handleSuccess: () => {
         alert('Notice Updated');
-        console.log(data);
-        navigate(`/notice/detail/${data.id}`);
-      })
-      .catch((response) => {
+        navigate(`/notice/detail/${id}`);
+      },
+      handleError: (response) => {
         console.log(response.status + response.statusText);
         navigate('/notice/list');
-      });
+      },
+    });
   };
 
   return (

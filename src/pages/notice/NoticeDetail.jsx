@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
+import Auth from '../../services/auth';
+import BasicAPI from '../../services/api';
 import EditMenu from '../../components/dropdown/DropdownEditMenu';
 import DownloadButton from '../../components/common/HoverDownloadButton';
 import FileIcon from '../../components/common/icons/FileIcon';
@@ -15,24 +17,29 @@ function NoticeDetail() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/api/notice/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          alert("Notice doesn't exist");
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setNotice(data);
-      })
-      .catch((response) => console.log(response));
+    const accessToken = Auth();
+    BasicAPI({
+      url: `/api/notice/${id}`,
+      method: 'GET',
+      accessToken,
+      handleSuccess: (response) => {
+        response
+          .json()
+          .then((data) => {
+            console.log(data);
+            setNotice(data);
+          })
+          .catch((error) => console.log(error));
+      },
+      handleError: (response) => {
+        console.error(response);
+      },
+    });
   }, []);
 
   const changePrivacy = () => {
-    let status;
     if (window.confirm('Are you sure to change privacy setting?')) {
+      let status;
       switch (notice.status) {
         case 10:
         case 20:
@@ -45,31 +52,24 @@ function NoticeDetail() {
           console.log('Wrong status value');
       }
 
-      fetch('/api/notice', {
+      const accessToken = Auth();
+      BasicAPI({
+        url: '/api/notice',
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({
           id: notice.id,
           status,
         }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            console('Status Not Updated');
-            return Promise.reject(response);
-          }
-          return response.json();
-        })
-        .then((data) => {
+        accessToken,
+        handleSuccess: () => {
           alert('Status Updated');
-          navigate(`/notice/detail/${data.id}`);
-        })
-        .catch((response) => {
-          console.log(response.status + response.statusText);
+          navigate(`/notice/detail/${id}`);
+        },
+        handleError: () => {
+          console.error('Status Not Updated');
           navigate('/notice/list');
-        });
+        },
+      });
     }
   };
 
@@ -77,19 +77,20 @@ function NoticeDetail() {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete notice ${id}?`
     );
+
     if (confirmDelete) {
-      fetch(`/api/notice/${id}`, {
+      const accessToken = Auth();
+      BasicAPI({
+        url: `/api/notice/${id}`,
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((response) => {
-        if (response.status === 204) {
+        accessToken,
+        handleSuccess: () => {
           alert('Notice deleted');
           navigate('/notice/list');
-        } else {
-          alert('Notice not deleted');
-        }
+        },
+        handleError: () => {
+          console.error('Notice not deleted');
+        },
       });
     }
   };
