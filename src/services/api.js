@@ -27,7 +27,7 @@ const BasicAPI = (config) => {
   fetch(tempConfig.url, {
     method: tempConfig.method,
     headers: tempConfig.headers,
-    body: tempConfig.body,
+    ...(tempConfig.body && { body: tempConfig.body }),
   })
     .then((response) => {
       if (!response.ok) {
